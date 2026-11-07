@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" width="1400" height="700">
+<defs>
+  <radialGradient id="b2" cx="55%" cy="35%" r="75%"><stop offset="0%" stop-color="#1a0e22"/><stop offset="55%" stop-color="#0c0614"/><stop offset="100%" stop-color="#04020a"/></radialGradient>
+  <radialGradient id="gl2" cx="60%" cy="40%" r="50%"><stop offset="0%" stop-color="#d4a93c" stop-opacity=".06"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+  <radialGradient id="sun2" cx="50%" cy="30%" r="50%"><stop offset="0%" stop-color="#f0a030" stop-opacity=".5"/><stop offset="40%" stop-color="#c06020" stop-opacity=".3"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+  <filter id="n1"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="n2"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="bl10"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="bl5"><feGaussianBlur stdDeviation="5"/></filter>
+  <linearGradient id="desk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#100c18"/><stop offset="100%" stop-color="#0a0610"/></linearGradient>
+</defs>
+
+<rect width="1400" height="700" fill="url(#b2)"/>
+<rect width="1400" height="700" fill="url(#gl2)"/>
+
+<!-- DESK -->
+<rect x="0" y="450" width="1400" height="250" fill="url(#desk2)"/>
+<line x1="0" y1="450" x2="1400" y2="450" stroke="#2a1e40" stroke-width="1.5" opacity=".4"/>
+
+<!-- ====== MONITOR CURVO ULTRAWIDE ====== -->
+<g transform="translate(650,50)">
+  <!-- Stand -->
+  <rect x="230" y="350" width="55" height="45" rx="4" fill="#100c18" stroke="#251e38" stroke-width="1"/>
+  <ellipse cx="258" cy="400" rx="80" ry="11" fill="#0a0610" stroke="#251e38" stroke-width="1"/>
+  <!-- Marco monitor curvo -->
+  <path d="M-10,5 Q260,-18 530,5 L530,325 Q260,340 -10,325Z" fill="#0e0a18" stroke="#2a2040" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Bezel -->
+  <path d="M2,13 Q260,-8 518,13 L518,316 Q260,332 2,316Z" fill="#060410"/>
+  
+  <!-- ====== PANTALLA: Paisaje sunset épico ====== -->
+  <clipPath id="sc2"><path d="M8,18 Q260,-3 512,18 L512,310 Q260,326 8,310Z"/></clipPath>
+  <g clip-path="url(#sc2)">
+    <!-- Cielo sunset -->
+    <rect x="0" y="10" width="520" height="320" fill="#1a0828"/>
+    <rect x="0" y="10" width="520" height="180" fill="#2a1040"/>
+    <rect x="0" y="10" width="520" height="100" fill="#4a2050" opacity=".6"/>
+    <rect x="0" y="10" width="520" height="55" fill="#804830" opacity=".5"/>
+    <!-- Sol enorme -->
+    <circle cx="260" cy="85" r="55" fill="#f0a030" opacity=".15" filter="url(#bl10)"/>
+    <circle cx="260" cy="85" r="35" fill="#f0b040" opacity=".25" filter="url(#bl5)"/>
+    <circle cx="260" cy="85" r="20" fill="#ffe080" opacity=".5"/>
+    <!-- Rayos de sol -->
+    <line x1="260" y1="30" x2="260" y2="20" stroke="#f0c050" stroke-width="1.5" opacity=".2"/>
+    <line x1="220" y1="45" x2="210" y2="35" stroke="#f0c050" stroke-width="1" opacity=".15"/>
+    <line x1="300" y1="45" x2="310" y2="35" stroke="#f0c050" stroke-width="1" opacity=".15"/>
+    <!-- Nubes -->
+    <ellipse cx="140" cy="55" rx="65" ry="12" fill="#8a4830" opacity=".35"/>
+    <ellipse cx="380" cy="68" rx="55" ry="10" fill="#703828" opacity=".35"/>
+    <ellipse cx="80" cy="80" rx="50" ry="8" fill="#5a2825" opacity=".35"/>
+    <ellipse cx="440" cy="50" rx="40" ry="8" fill="#905030" opacity=".25"/>
+    <!-- Montañas lejanas -->
+    <polygon points="0,210 50,130 100,165 160,100 220,145 280,115 350,140 420,105 520,135 520,230 0,230" fill="#1a0825"/>
+    <!-- Montañas medias -->
+    <polygon points="0,250 70,180 150,210 230,160 310,200 390,170 470,195 520,180 520,270 0,270" fill="#120620"/>
+    <!-- Vegetación/árboles silueta -->
+    <g fill="#0a0418" opacity=".9">
+      <ellipse cx="80" cy="240" rx="15" ry="25"/><rect x="78" y="240" width="4" height="20"/>
+      <ellipse cx="160" cy="245" rx="12" ry="20"/><rect x="158" y="245" width="4" height="18"/>
+      <ellipse cx="380" cy="242" rx="18" ry="28"/><rect x="378" y="242" width="4" height="22"/>
+      <ellipse cx="460" cy="248" rx="10" ry="18"/><rect x="458" y="248" width="4" height="15"/>
+    </g>
+    <!-- GUERRERO de espaldas (silueta) -->
+    <g transform="translate(260,200)">
+      <!-- Capa ondeando -->
+      <path d="M-18,-25 Q-50,0 -40,50 Q-30,70 -15,55 L-12,-5Z" fill="#0a0418" opacity=".85"/>
+      <path d="M18,-25 Q40,5 35,40 Q28,55 15,45 L12,-5Z" fill="#0a0418" opacity=".7"/>
+      <!-- Cabeza -->
+      <ellipse cx="0" cy="-40" rx="9" ry="11" fill="#0a0418"/>
+      <!-- Cuerpo -->
+      <path d="M-14,-25 L14,-25 L16,20 L-16,20Z" fill="#0a0418"/>
+      <!-- Piernas -->
+      <rect x="-10" y="20" width="8" height="22" fill="#0a0418"/>
+      <rect x="2" y="20" width="8" height="22" fill="#0a0418"/>
+      <!-- Espada brillante -->
+      <line x1="18" y1="-20" x2="35" y2="-55" stroke="#d4a93c" stroke-width="3" filter="url(#n2)"/>
+      <line x1="18" y1="-20" x2="35" y2="-55" stroke="#ffe080" stroke-width="1.5"/>
+    </g>
+    <!-- Pájaros -->
+    <path d="M120,50 Q126,43 132,50" stroke="#1a0a10" stroke-width="1.5" fill="none"/>
+    <path d="M155,40 Q160,35 165,40" stroke="#1a0a10" stroke-width="1.2" fill="none"/>
+    <path d="M350,55 Q355,50 360,55" stroke="#1a0a10" stroke-width="1" fill="none"/>
+    <path d="M400,38 Q404,34 408,38" stroke="#1a0a10" stroke-width="1" fill="none"/>
+  </g>
+  
+  <!-- RGB bajo pantalla -->
+  <rect x="10" y="312" width="500" height="3" rx="1" fill="#b69ce8" filter="url(#n2)" opacity=".45"/>
+  <!-- Logo del monitor -->
+  <rect x="230" y="322" width="56" height="5" rx="2" fill="#2a2040" opacity=".5"/>
+</g>
+
+<!-- ====== CONTROL PS5 en primer plano ====== -->
+<g transform="translate(720,460) scale(1.4)">
+  <!-- Sombra -->
+  <ellipse cx="65" cy="78" rx="75" ry="10" fill="#040210" opacity=".6" filter="url(#bl5)"/>
+  <!-- Cuerpo blanco -->
+  <ellipse cx="65" cy="26" rx="74" ry="36" fill="#dcdce8" stroke="#b8b8c8" stroke-width="1"/>
+  <!-- Grips -->
+  <path d="M-2,14 Q-20,50 -10,85 Q0,96 18,75 Q24,52 14,18Z" fill="#d4d4e2" stroke="#b8b8c8" stroke-width="1"/>
+  <path d="M132,14 Q150,50 140,85 Q130,96 112,75 Q106,52 116,18Z" fill="#d4d4e2" stroke="#b8b8c8" stroke-width="1"/>
+  <!-- Touchpad -->
+  <rect x="26" y="2" width="78" height="32" rx="8" fill="#c0c0d2" stroke="#a8a8b8" stroke-width=".8"/>
+  <!-- División touchpad -->
+  <line x1="65" y1="4" x2="65" y2="32" stroke="#b0b0c0" stroke-width=".5"/>
+  <!-- Sticks -->
+  <circle cx="30" cy="44" r="11" fill="#1e1e32" stroke="#333348" stroke-width="1"/><circle cx="30" cy="44" r="7" fill="#28283e"/>
+  <circle cx="100" cy="44" r="11" fill="#1e1e32" stroke="#333348" stroke-width="1"/><circle cx="100" cy="44" r="7" fill="#28283e"/>
+  <!-- Botones -->
+  <circle cx="112" cy="10" r="4.5" fill="#5580bb" opacity=".45"/>
+  <circle cx="122" cy="20" r="4.5" fill="#cc4444" opacity=".45"/>
+  <circle cx="102" cy="20" r="4.5" fill="#cc44aa" opacity=".4"/>
+  <circle cx="112" cy="30" r="4.5" fill="#44aa55" opacity=".4"/>
+  <!-- D-pad -->
+  <rect x="22" y="8" width="5" height="16" rx="1.5" fill="#1e1e32"/><rect x="16" y="14" width="16" height="5" rx="1.5" fill="#1e1e32"/>
+  <!-- LED controller -->
+  <rect x="22" y="-2" width="86" height="2.5" rx="1" fill="#b69ce8" filter="url(#n2)" opacity=".5"/>
+</g>
+
+<!-- ====== TECLADO a la derecha ====== -->
+<g transform="translate(1050,475) rotate(-4) scale(.7)">
+  <rect x="0" y="0" width="300" height="95" rx="8" fill="#100c18" stroke="#251e38" stroke-width="1.5"/>
+  <!-- Teclas fila 1 -->
+  <g fill="#1e1a2e" opacity=".65">
+    <rect x="10" y="8" width="16" height="13" rx="2.5"/><rect x="29" y="8" width="16" height="13" rx="2.5"/>
+    <rect x="48" y="8" width="16" height="13" rx="2.5"/><rect x="67" y="8" width="16" height="13" rx="2.5"/>
+    <rect x="86" y="8" width="16" height="13" rx="2.5"/><rect x="105" y="8" width="16" height="13" rx="2.5"/>
+    <rect x="124" y="8" width="16" height="13" rx="2.5"/><rect x="143" y="8" width="16" height="13" rx="2.5"/>
+    <rect x="162" y="8" width="16" height="13" rx="2.5"/><rect x="181" y="8" width="16" height="13" rx="2.5"/>
+    <rect x="200" y="8" width="16" height="13" rx="2.5"/><rect x="219" y="8" width="16" height="13" rx="2.5"/>
+    <rect x="238" y="8" width="52" height="13" rx="2.5"/>
+  </g>
+  <!-- Teclas fila 2 -->
+  <g fill="#1e1a2e" opacity=".65">
+    <rect x="10" y="24" width="24" height="13" rx="2.5"/><rect x="37" y="24" width="16" height="13" rx="2.5"/>
+    <rect x="56" y="24" width="16" height="13" rx="2.5"/><rect x="75" y="24" width="16" height="13" rx="2.5"/>
+    <rect x="94" y="24" width="16" height="13" rx="2.5"/><rect x="113" y="24" width="16" height="13" rx="2.5"/>
+    <rect x="132" y="24" width="16" height="13" rx="2.5"/><rect x="151" y="24" width="16" height="13" rx="2.5"/>
+    <rect x="170" y="24" width="16" height="13" rx="2.5"/><rect x="189" y="24" width="16" height="13" rx="2.5"/>
+    <rect x="208" y="24" width="16" height="13" rx="2.5"/><rect x="227" y="24" width="63" height="29" rx="2.5"/>
+  </g>
+  <!-- Teclas fila 3 + 4 -->
+  <g fill="#1e1a2e" opacity=".65">
+    <rect x="10" y="40" width="30" height="13" rx="2.5"/><rect x="43" y="40" width="16" height="13" rx="2.5"/>
+    <rect x="62" y="40" width="16" height="13" rx="2.5"/><rect x="81" y="40" width="16" height="13" rx="2.5"/>
+    <rect x="100" y="40" width="16" height="13" rx="2.5"/><rect x="119" y="40" width="16" height="13" rx="2.5"/>
+    <rect x="138" y="40" width="16" height="13" rx="2.5"/><rect x="157" y="40" width="16" height="13" rx="2.5"/>
+    <rect x="176" y="40" width="16" height="13" rx="2.5"/><rect x="195" y="40" width="16" height="13" rx="2.5"/>
+    <rect x="10" y="56" width="38" height="13" rx="2.5"/><rect x="51" y="56" width="16" height="13" rx="2.5"/>
+    <rect x="70" y="56" width="130" height="13" rx="2.5"/>
+    <rect x="203" y="56" width="16" height="13" rx="2.5"/><rect x="222" y="56" width="16" height="13" rx="2.5"/>
+    <rect x="241" y="56" width="16" height="13" rx="2.5"/><rect x="260" y="56" width="30" height="13" rx="2.5"/>
+  </g>
+  <!-- WASD glow -->
+  <rect x="37" y="24" width="16" height="13" rx="2.5" fill="#d4a93c" opacity=".2"/>
+  <rect x="10" y="40" width="30" height="13" rx="2.5" fill="#d4a93c" opacity=".12"/>
+  <rect x="43" y="40" width="16" height="13" rx="2.5" fill="#d4a93c" opacity=".2"/>
+  <rect x="62" y="40" width="16" height="13" rx="2.5" fill="#d4a93c" opacity=".2"/>
+  <!-- RGB underglow -->
+  <rect x="0" y="72" width="300" height="3" rx="1" fill="#b69ce8" filter="url(#n2)" opacity=".3"/>
+</g>
+
+<!-- ====== MOUSE ====== -->
+<g transform="translate(1020,490)">
+  <ellipse cx="15" cy="22" rx="16" ry="26" fill="#100c18" stroke="#251e38" stroke-width="1"/>
+  <ellipse cx="15" cy="8" rx="12" ry="9" fill="#181430"/>
+  <line x1="15" y1="1" x2="15" y2="15" stroke="#201a30" stroke-width=".8"/>
+  <circle cx="15" cy="10" r="3" fill="#b69ce8" filter="url(#n2)" opacity=".4"/>
+</g>
+
+<!-- Reflejo dorado en escritorio -->
+<ellipse cx="920" cy="510" rx="280" ry="50" fill="#d4a93c" opacity=".025" filter="url(#bl10)"/>
+
+<!-- Partículas -->
+<circle cx="620" cy="80" r="1.8" fill="#d4a93c" opacity=".4"><animate attributeName="opacity" values=".2;.5;.2" dur="3s" repeatCount="indefinite"/></circle>
+<circle cx="1200" cy="150" r="1.2" fill="#b69ce8" opacity=".35"><animate attributeName="opacity" values=".15;.45;.15" dur="4s" repeatCount="indefinite"/></circle>
+<circle cx="850" cy="420" r="1" fill="#d4a93c" opacity=".3"/>
+<circle cx="1320" cy="380" r="1.5" fill="#b69ce8" opacity=".25"/>
+</svg>

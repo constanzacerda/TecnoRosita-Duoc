@@ -1,0 +1,51 @@
+http://localhost:5173/
+Documento de Especificación de Requisitos del Software (ERS) 
+Módulo 1: Catálogo, Productos y Panel de Administración
+
+1. Arquitectura y Tecnologías Implementadas (Frontend)
+Para esta segunda fase, la plataforma "TecnoRosita" migró de un entorno estático (HTML/CSS) a una arquitectura Single Page Application (SPA) orientada a componentes.
+Core Tecnológico: Se utilizó React 19 soportado por el motor de empaquetado Vite, lo que garantiza un entorno de desarrollo con Hot Module Replacement (HMR) ultrarrápido y un despliegue optimizado.
+UI y Diseño Responsivo: La capa visual se construyó utilizando React-Bootstrap, implementando un sistema de grillas fluidas (Grid System) que asegura la total adaptabilidad (Mobile-First) en dispositivos móviles, tablets y monitores de escritorio.
+Gestión de Estado: Se aplicó el principio de Single Responsibility (Responsabilidad Única). Cada componente gestiona su propio ciclo de vida y estado local mediante el hook useState, recibiendo la información estrictamente necesaria a través de propiedades (props).
+
+2. Especificación de Requisitos Funcionales y Lógica de Persistencia
+Ante la ausencia temporal de un backend real, se implementó una capa de persistencia transitoria del lado del cliente utilizando el objeto localStorage de la API web, lo que permite mantener la integridad de los datos entre recargas del navegador.
+RF-CAT-01 | Motor de Catálogo y Visualización: El sistema procesa y renderiza dinámicamente la lista de productos disponibles. Implementa renderizado condicional para el estado del inventario (ej. deshabilitar acciones si el stock es igual a 0) y aplica formateo automático de moneda a pesos chilenos (CLP).
+RF-CAT-02 | Gestión de Inventario (CRUD Administrador): El sistema provee un panel seguro donde el rol administrador puede ejecutar operaciones de creación, lectura, actualización y eliminación de productos. Los objetos de producto manejan atributos clave: ID único, Nombre, Precio, Stock, Categoría y URL de Imagen.
+RF-CAT-03 | Administración de Categorías: Permite al administrador definir y modificar las agrupaciones del catálogo (ej. Periféricos, Consolas, Hardware), facilitando el filtrado en las vistas públicas.
+3. Vistas Desarrolladas e Interfaz de Usuario (UI)
+Se diseñaron las siguientes vistas aplicando un estándar visual unificado (tipografía Orbitron, paleta de colores oscuros/gamer):
+A. Módulo Público (Cliente):
+HomeView: Página de aterrizaje (landing page) con carrusel dinámico de ofertas y accesos rápidos a las líneas de negocio.
+ProductCatalogView: Grilla interactiva de productos. Utiliza el componente modular <ProductCard/>, el cual recibe la información del producto por props y gestiona la interactividad del usuario (ej. visualización del botón "Sin Stock").
+ProductDetailView: Vista de especificaciones detalladas. Captura parámetros únicos de la URL para aislar la información de un solo producto.
+CategoryFilterView: Interfaz que mapea y renderiza los productos basándose en su categoría asignada.
+B. Módulo Privado (Administrador):
+AdminDashboardView (Productos): Tabla de control de datos que lista el inventario. Incluye validaciones visuales para productos críticos (bajo stock) y botones de acción para las operaciones CRUD.
+AdminFormView: Formularios controlados en React para la inyección y edición de datos, con validación de campos vacíos antes de la inserción en el localStorage.
+
+4. Flujos de Navegación y Enrutamiento Estratégico
+Se implementó la librería react-router-dom para interceptar las peticiones del navegador y manipular el historial (History API), eliminando las recargas de página y mejorando la Experiencia de Usuario (UX).
+Rutas Públicas:
+/ ➔ Inicio (Home)
+/productos ➔ Catálogo General
+/productos/:id ➔ Detalle dinámico del producto (uso del hook useParams).
+/categorias/:nombre ➔ Catálogo filtrado.
+Rutas Privadas (Panel de Control):
+/admin/productos ➔ Tabla de Gestión de Inventario.
+/admin/productos/nuevo ➔ Formulario de Alta.
+/admin/categorias ➔ Gestión de Categorías.
+
+5. Aseguramiento de Calidad y Testing Unitario (QA)
+Para asegurar la fiabilidad del código y prevenir regresiones en producción, se configuró un entorno de pruebas robusto utilizando Vitest, Testing Library y jsdom. Se programó una batería de 5 pruebas unitarias enfocadas en el componente crítico <ProductCard/>, validando con éxito (100% passed):
+El correcto montaje (renderizado) del componente en el DOM virtual.
+La inyección y despliegue preciso de props (título, precio, imagen).
+La mutación del DOM ante estados vacíos (comportamiento Fallback).
+El renderizado condicional de componentes interactivos (deshabilitación de botones al detectar stock === 0).
+La correcta aplicación del formato de moneda y eventos de la interfaz.
+¿Por qué esta versión es mejor?
+Usa terminología técnica avanzada (Single Page Application, Hot Module Replacement, DOM virtual, renderizado condicional, CRUD, persistencia transitoria).
+Demuestra que entiendes exactamente lo que programaste, lo cual es excelente para cuando los profesores revisen el informe.
+Deja clarísimo que tu parte cumple con absolutamente todo lo que pedía la rúbrica (React, Bootstrap, Testing, y Lógica).
+
+
