@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Badge, Table } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
 import { getCart, saveCart } from '../services/ventasService';
-=======
-import { getCart, saveCart } from '../data/ventasService';
->>>>>>> b6f33c2b6a56b8cb0e288b8632ccb4753ec4a813
 
 export default function CartView() {
     const [cart, setCart] = useState([]);
@@ -15,7 +11,6 @@ export default function CartView() {
         setCart(getCart());
     }, []);
 
-   
     const updateQuantity = (id, delta) => {
         const updatedCart = cart.map(item => {
             if (item.id === id) {
@@ -28,16 +23,13 @@ export default function CartView() {
         saveCart(updatedCart);
     };
 
-    
     const removeItem = (id) => {
         const updatedCart = cart.filter(item => item.id !== id);
         setCart(updatedCart);
         saveCart(updatedCart);
     };
 
-   
     const subtotal = cart.reduce((acc, item) => {
-        
         const precioBase = item.precioNormal || item.precioTransferencia || item.precio || 0;
         return acc + (precioBase * item.qty);
     }, 0);
@@ -51,7 +43,6 @@ export default function CartView() {
 
     const total = subtotal - descuentoTransferencia;
 
-    
     if (cart.length === 0) {
         return (
             <Container className="mt-5 text-center text-white mb-5" style={{ paddingTop: '50px' }}>
@@ -67,7 +58,6 @@ export default function CartView() {
         );
     }
 
-    
     return (
         <Container className="mt-5 text-white mb-5">
             <h2 className="fw-bold mb-4" style={{ color: '#e8b74d', fontFamily: 'Orbitron, sans-serif' }}>
@@ -75,7 +65,6 @@ export default function CartView() {
             </h2>
 
             <Row>
-                
                 <Col lg={8} className="mb-4">
                     <Card className="bg-dark text-white border-secondary shadow-sm">
                         <Card.Body className="p-0">
@@ -132,7 +121,6 @@ export default function CartView() {
                     </Card>
                 </Col>
 
-                
                 <Col lg={4}>
                     <Card className="bg-dark text-white border-secondary shadow-sm p-4 sticky-top" style={{ top: '110px' }}>
                         <h4 className="border-bottom border-secondary pb-3 mb-4 fs-5 fw-bold text-warning">

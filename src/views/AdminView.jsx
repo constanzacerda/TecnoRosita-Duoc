@@ -15,8 +15,6 @@ const AdminView = () => {
 
     return (
         <Container className="mt-5 mb-5 text-white">
-            
-            
             <Card className="bg-dark border-secondary shadow-lg mb-4 p-3">
                 <Card.Body className="text-center">
                     <h1 className="text-warning fw-bold" style={{ fontFamily: 'Orbitron, sans-serif', textShadow: '2px 2px 5px rgba(0,0,0,0.8)', fontSize: '2.8rem' }}>
@@ -27,9 +25,7 @@ const AdminView = () => {
                     </p>
                 </Card.Body>
             </Card>
-            {/* ------------------------------------------- */}
 
-            {/* CONTROLES */}
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <h4 className="text-light mb-0">Listado de Productos</h4>
                 {!esVendedor && (
@@ -39,7 +35,6 @@ const AdminView = () => {
                 )}
             </div>
 
-            
             <Table striped bordered hover variant="dark" className="border-secondary shadow-lg">
                 <thead>
                     <tr>
