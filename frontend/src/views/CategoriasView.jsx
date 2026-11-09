@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Badge } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
-import { getProductos } from '../data/productos';
+import { obtenerProductos } from '../services/productoService';
 
 const CategoriasView = () => {
   const [productos, setProductos] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState('Todos');
+  const [loading, setLoading] = useState(true);
 
-  
   useEffect(() => {
-    setProductos(getProductos());
+    const fetchCategorias = async () => {
+        const data = await obtenerProductos();
+        setProductos(data || []);
+        setLoading(false);
+    };
+    fetchCategorias();
   }, []);
 
- 
-  const categoriasUnicas = ['Todos', ...new Set(productos.map(p => p.categoria))];
-
   
+  const categoriasUnicas = ['Todos', ...new Set(productos.map(p => p.categoria).filter(Boolean))];
+
   const productosFiltrados = categoriaActiva === 'Todos' 
     ? productos 
     : productos.filter(p => p.categoria === categoriaActiva);
@@ -27,7 +31,6 @@ const CategoriasView = () => {
         <p className="text-muted">Filtra nuestro catálogo interactivo para encontrar exactamente lo que buscas.</p>
       </div>
 
-      
       <div className="d-flex flex-wrap justify-content-center gap-2 mb-5">
         {categoriasUnicas.map(cat => (
           <Button 
@@ -41,25 +44,28 @@ const CategoriasView = () => {
         ))}
       </div>
 
-      
       <div className="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
         <h4 className="text-warning mb-0">{categoriaActiva}</h4>
         <Badge bg="secondary" className="fs-6">{productosFiltrados.length} productos</Badge>
       </div>
 
-      <Row className="g-4">
-        {productosFiltrados.length > 0 ? (
-          productosFiltrados.map(producto => (
-            <Col md={4} lg={3} key={producto.id}>
-              <ProductCard producto={producto} />
+      {loading ? (
+        <h4 className="text-center text-muted py-5">Cargando inventario...</h4>
+      ) : (
+        <Row className="g-4">
+          {productosFiltrados.length > 0 ? (
+            productosFiltrados.map(producto => (
+              <Col md={4} lg={3} key={producto.id}>
+                <ProductCard producto={producto} />
+              </Col>
+            ))
+          ) : (
+            <Col className="text-center py-5">
+              <h4 className="text-muted">No hay productos disponibles en esta categoría.</h4>
             </Col>
-          ))
-        ) : (
-          <Col className="text-center py-5">
-            <h4 className="text-muted">No hay productos disponibles en esta categoría.</h4>
-          </Col>
-        )}
-      </Row>
+          )}
+        </Row>
+      )}
     </Container>
   );
 };

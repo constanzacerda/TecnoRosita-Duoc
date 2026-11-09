@@ -6,6 +6,7 @@ import MenuNavegacion from './components/MenuNavegacion';
 import ProductCard from './components/ProductCard';
 import Footer from './components/Footer';
 import { getProductos } from './data/productos';
+import ProtectedRoute from './components/ProtectedRoute'; 
 
 import HomeView from './views/HomeView'; 
 import CategoriasView from './views/CategoriasView';
@@ -24,6 +25,8 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    // Cuando Constanza tenga los endpoints REST listos, 
+    // aquí cambia getProductos() por una llamada a axios.
     setProductos(getProductos());
   }, [location]);
 
@@ -32,6 +35,7 @@ function App() {
       <MenuNavegacion />
       <div style={{ flex: 1, paddingBottom: '50px' }}>
         <Routes>
+          
           <Route path="/" element={<HomeView />} />
           <Route path="/productos" element={
             <Container className="pt-4">
@@ -47,12 +51,28 @@ function App() {
           <Route path="/producto/:id" element={<ProductDetailView />} />
           <Route path="/blog" element={<BlogView />} />
           <Route path="/contacto" element={<ContactoView />} />
-          <Route path="/admin" element={<AdminDashboardView />} />
-          <Route path="/admin/productos" element={<AdminView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/registro" element={<RegistroView />} />
-          <Route path="/carrito" element={<CartView />} /> 
-          <Route path="/checkout" element={<CheckoutView />} />
+
+          
+          
+          
+          <Route element={<ProtectedRoute allowedRoles={['ADMINISTRADOR']} />}>
+            <Route path="/admin" element={<AdminDashboardView />} />
+          </Route>
+
+          
+          <Route element={<ProtectedRoute allowedRoles={['ADMINISTRADOR', 'VENDEDOR']} />}>
+            <Route path="/admin/productos" element={<AdminView />} />
+          </Route>
+
+          
+          <Route element={<ProtectedRoute allowedRoles={['ADMINISTRADOR', 'VENDEDOR', 'CLIENTE']} />}>
+            <Route path="/carrito" element={<CartView />} /> 
+            <Route path="/checkout" element={<CheckoutView />} />
+          </Route>
+
+          
           <Route path="*" element={
             <Container className="text-center mt-5">
               <h1 style={{ fontSize: '5rem', color: '#e8b74d', fontFamily: 'Orbitron, sans-serif' }}>404</h1>

@@ -2,21 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
-import { getProductos } from '../data/productos';
+
+import { obtenerProductos } from '../services/productoService';
 
 const HomeView = () => {
   const [destacados, setDestacados] = useState([]);
   const [ofertas, setOfertas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const todosProductos = getProductos();
-    setDestacados(todosProductos.slice(0, 4)); 
-    setOfertas(todosProductos.slice(4, 8)); 
+    const fetchProductos = async () => {
+        
+        const todosProductos = await obtenerProductos();
+        
+        
+        if (todosProductos && todosProductos.length > 0) {
+            setDestacados(todosProductos.slice(0, 4)); 
+            setOfertas(todosProductos.slice(4, 8)); 
+        }
+        setLoading(false);
+    };
+    fetchProductos();
   }, []);
 
   return (
     <main>
-      
       <section className="hero" aria-label="Banner principal" style={{ overflow: 'hidden', position: 'relative' }}>
         <div className="hero__slide hero__slide--a is-active" style={{ opacity: 1, position: 'relative', display: 'block' }}>
           <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=1600&h=800&fit=crop&auto=format&q=80" alt="" className="hero__bg-img" loading="eager" />
@@ -32,7 +42,6 @@ const HomeView = () => {
         </div>
       </section>
 
-      
       <div className="container mt-4">
         <div className="value-strip">
           <div className="value-item">
@@ -62,14 +71,12 @@ const HomeView = () => {
         </div>
       </div>
 
-      
       <section className="page-section page-section--tight mt-5">
         <div className="container">
           <div className="section-header text-center mb-4">
             <span className="section-eyebrow" style={{ color: '#e8b74d' }}>Explora por categoría</span>
             <h2 className="section-title text-white">Descubre Nuestras Categorías</h2>
           </div>
-          
           <Row className="g-4">
             <Col md={3}>
               <Card as={Link} to="/categorias" className="bg-dark text-white border-secondary p-3 text-decoration-none h-100 shadow-sm" style={{ borderLeft: '4px solid #e8b74d' }}>
@@ -81,7 +88,6 @@ const HomeView = () => {
                 </Card.Body>
               </Card>
             </Col>
-
             <Col md={3}>
               <Card as={Link} to="/categorias" className="bg-dark text-white border-secondary p-3 text-decoration-none h-100 shadow-sm" style={{ borderLeft: '4px solid #e8b74d' }}>
                 <Card.Body>
@@ -92,7 +98,6 @@ const HomeView = () => {
                 </Card.Body>
               </Card>
             </Col>
-
             <Col md={3}>
               <Card as={Link} to="/categorias" className="bg-dark text-white border-secondary p-3 text-decoration-none h-100 shadow-sm" style={{ borderLeft: '4px solid #e8b74d' }}>
                 <Card.Body>
@@ -103,7 +108,6 @@ const HomeView = () => {
                 </Card.Body>
               </Card>
             </Col>
-
             <Col md={3}>
               <Card as={Link} to="/categorias" className="bg-dark text-white border-secondary p-3 text-decoration-none h-100 shadow-sm" style={{ borderLeft: '4px solid #e8b74d' }}>
                 <Card.Body>
@@ -118,37 +122,43 @@ const HomeView = () => {
         </div>
       </section>
 
-      
       <section className="page-section page-section--tight mt-5 mb-5">
         <div className="container">
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '2rem' }}>
             <span className="section-eyebrow" style={{ color: '#e8b74d' }}>Catálogo TecnoRosita</span>
             <h2 className="section-title text-white">Productos Destacados</h2>
           </div>
-          <Row className="g-4">
-            {destacados.map(producto => (
-              <Col md={6} lg={3} key={producto.id}>
-                <ProductCard producto={producto} />
-              </Col>
-            ))}
-          </Row>
+          {loading ? (
+             <h5 className="text-white">Cargando productos desde el servidor...</h5>
+          ) : (
+            <Row className="g-4">
+              {destacados.map(producto => (
+                <Col md={6} lg={3} key={producto.id}>
+                  <ProductCard producto={producto} />
+                </Col>
+              ))}
+            </Row>
+          )}
         </div>
       </section>
 
-      
       <section className="page-section page-section--tight mb-5">
         <div className="container">
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '2rem' }}>
             <span className="section-eyebrow" style={{ color: '#e8b74d' }}>Ofertas Especiales</span>
-            <h2 className="section-title text-white">Lo más vendido en Mouse</h2>
+            <h2 className="section-title text-white">Lo más vendido</h2>
           </div>
-          <Row className="g-4">
-            {ofertas.map(producto => (
-              <Col md={6} lg={3} key={producto.id}>
-                <ProductCard producto={producto} />
-              </Col>
-            ))}
-          </Row>
+          {loading ? (
+             <h5 className="text-white">Cargando ofertas desde el servidor...</h5>
+          ) : (
+            <Row className="g-4">
+              {ofertas.map(producto => (
+                <Col md={6} lg={3} key={producto.id}>
+                  <ProductCard producto={producto} />
+                </Col>
+              ))}
+            </Row>
+          )}
         </div>
       </section>
     </main>

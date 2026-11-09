@@ -5,11 +5,13 @@ import { getProductos } from '../data/productos';
 
 const AdminView = () => {
     const { user } = useContext(AuthContext); 
+    
     const esVendedor = user?.rol === 'VENDEDOR';
     
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
+        
         setProductos(getProductos());
     }, []);
 
@@ -28,6 +30,7 @@ const AdminView = () => {
 
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <h4 className="text-light mb-0">Listado de Productos</h4>
+                
                 {!esVendedor && (
                     <Button variant="success" className="fw-bold text-dark shadow-sm">
                         + Nuevo Producto
@@ -43,6 +46,7 @@ const AdminView = () => {
                         <th className="text-warning">Categoría</th>
                         <th className="text-warning">Precio</th>
                         <th className="text-warning text-center">Stock</th>
+                        
                         {!esVendedor && <th className="text-warning text-center">Acciones</th>}
                     </tr>
                 </thead>
@@ -58,6 +62,7 @@ const AdminView = () => {
                                     {prod.stockOnline !== undefined ? prod.stockOnline : (prod.stock || 0)}
                                 </span>
                             </td>
+                            
                             
                             {!esVendedor && (
                                 <td className="text-center">

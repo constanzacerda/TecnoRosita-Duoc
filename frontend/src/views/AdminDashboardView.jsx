@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table, Button, Card, Badge, Row, Col } from 'react-bootstrap';
-import { getProductos, eliminarProducto } from '../data/productos'; 
+import { obtenerProductos, eliminarProducto } from '../services/productoService'; 
 
 export default function AdminDashboardView() {
     const [productos, setProductos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    
     useEffect(() => {
-        setProductos(getProductos());
+        cargarProductos();
     }, []);
 
-    
-    const handleDelete = (id) => {
-        if(window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-            eliminarProducto(id);
-            setProductos(getProductos()); 
+    const cargarProductos = async () => {
+        const data = await obtenerProductos();
+        setProductos(data || []);
+        setLoading(false);
+    };
+
+    const handleDelete = async (id) => {
+        if(window.confirm('¿Estás seguro de que deseas eliminar este producto permanentemente de la base de datos?')) {
+            const exito = await eliminarProducto(id);
+            if (exito) {
+                
+                setProductos(productos.filter(p => p.id !== id)); 
+            } else {
+                alert("Error al eliminar el producto. Revisa tus permisos o si el servidor está conectado.");
+            }
         }
     };
 
@@ -30,12 +40,13 @@ export default function AdminDashboardView() {
                 </Badge>
             </div>
 
-            
             <Row className="mb-4">
                 <Col md={4}>
                     <Card className="bg-dark text-white border-secondary p-3 shadow-sm">
                         <small className="text-muted text-uppercase">Categorías Activas</small>
-                        <h3 className="text-warning fw-bold mt-1">11 Categorías</h3>
+                        <h3 className="text-warning fw-bold mt-1">
+                            {new Set(productos.map(p => p.categoria).filter(Boolean)).size} Categorías
+                        </h3>
                     </Card>
                 </Col>
                 <Col md={4}>
@@ -54,7 +65,6 @@ export default function AdminDashboardView() {
                 </Col>
             </Row>
 
-            
             <Card className="bg-dark text-white border-secondary shadow-sm">
                 <Card.Body className="p-0">
                     <Table variant="dark" responsive align="middle" className="mb-0 text-white">
@@ -69,53 +79,59 @@ export default function AdminDashboardView() {
                             </tr>
                         </thead>
                         <tbody>
-                            {productos.map(item => {
-                                const precioSeguro = item.precioTransferencia || item.precio || 0;
-                                const stockSeguro = item.stockOnline !== undefined ? item.stockOnline : 0;
+                            {loading ? (
+                                <tr><td colSpan="6" className="text-center py-4">Cargando base de datos...</td></tr>
+                            ) : productos.length === 0 ? (
+                                <tr><td colSpan="6" className="text-center py-4 text-muted">No hay productos en la base de datos</td></tr>
+                            ) : (
+                                productos.map(item => {
+                                    const precioSeguro = item.precioTransferencia || item.precio || 0;
+                                    const stockSeguro = item.stockOnline !== undefined ? item.stockOnline : 0;
 
-                                return (
-                                    <tr key={item.id} className="border-bottom border-secondary">
-                                        <td className="ps-3 py-3">
-                                            <span className="fw-bold text-warning">#{item.id}</span>
-                                            <br />
-                                            <small className="text-muted">{item.sku || 'N/A'}</small>
-                                        </td>
-                                        <td className="py-3">
-                                            <div className="d-flex align-items-center">
-                                                <img 
-                                                    src={item.imagen} 
-                                                    alt={item.nombre} 
-                                                    style={{ width: '45px', height: '45px', objectFit: 'cover' }} 
-                                                    className="rounded border border-secondary me-3" 
-                                                />
-                                                <div>
-                                                    <h6 className="mb-0 fw-bold fs-6 text-truncate" style={{ maxWidth: '280px' }}>{item.nombre}</h6>
-                                                    <small className="text-muted">{item.marca || 'Genérica'}</small>
+                                    return (
+                                        <tr key={item.id} className="border-bottom border-secondary">
+                                            <td className="ps-3 py-3">
+                                                <span className="fw-bold text-warning">#{item.id}</span>
+                                                <br />
+                                                <small className="text-muted">{item.sku || 'N/A'}</small>
+                                            </td>
+                                            <td className="py-3">
+                                                <div className="d-flex align-items-center">
+                                                    <img 
+                                                        src={item.imagen} 
+                                                        alt={item.nombre} 
+                                                        style={{ width: '45px', height: '45px', objectFit: 'cover' }} 
+                                                        className="rounded border border-secondary me-3" 
+                                                    />
+                                                    <div>
+                                                        <h6 className="mb-0 fw-bold fs-6 text-truncate" style={{ maxWidth: '280px' }}>{item.nombre}</h6>
+                                                        <small className="text-muted">{item.marca || 'Genérica'}</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td className="py-3">
-                                            <Badge bg="secondary" className="text-white">{item.categoria}</Badge>
-                                        </td>
-                                        <td className="py-3 fw-bold text-light">
-                                            ${precioSeguro.toLocaleString('es-CL')}
-                                        </td>
-                                        <td className="py-3 text-center">
-                                            <Badge bg={stockSeguro > 5 ? 'success' : 'danger'}>
-                                                {stockSeguro} un.
-                                            </Badge>
-                                        </td>
-                                        <td className="py-3 text-center">
-                                            <Button variant="outline-warning" size="sm" className="me-2 text-dark bg-warning border-warning fw-bold">
-                                                Editar
-                                            </Button>
-                                            <Button variant="outline-danger" size="sm" onClick={() => handleDelete(item.id)}>
-                                                Eliminar
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
+                                            </td>
+                                            <td className="py-3">
+                                                <Badge bg="secondary" className="text-white">{item.categoria}</Badge>
+                                            </td>
+                                            <td className="py-3 fw-bold text-light">
+                                                ${precioSeguro.toLocaleString('es-CL')}
+                                            </td>
+                                            <td className="py-3 text-center">
+                                                <Badge bg={stockSeguro > 5 ? 'success' : 'danger'}>
+                                                    {stockSeguro} un.
+                                                </Badge>
+                                            </td>
+                                            <td className="py-3 text-center">
+                                                <Button variant="outline-warning" size="sm" className="me-2 text-dark bg-warning border-warning fw-bold">
+                                                    Editar
+                                                </Button>
+                                                <Button variant="outline-danger" size="sm" onClick={() => handleDelete(item.id)}>
+                                                    Eliminar
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                            )}
                         </tbody>
                     </Table>
                 </Card.Body>

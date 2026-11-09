@@ -2,8 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { ventasService } from '../services/ventasService';
-// import { registerUser } from '../services/authService'; // Comentado hasta tener Spring Boot
+import { registerUser } from '../services/authService'; 
 
 export default function RegistroView() {
     const [formData, setFormData] = useState({
@@ -26,45 +25,26 @@ export default function RegistroView() {
         setError('');
         setLoading(true);
 
-        // --- SIMULACIÓN TEMPORAL (Borrar cuando conectemos Spring Boot) ---
-        setTimeout(() => {
-            const usuariosGuardados = ventasService.obtenerUsuarios();
-            const existe = usuariosGuardados.find(u => u.email === formData.email);
-
-            if (existe) {
-                setError('Error al registrar el usuario. El correo ya está en uso.');
-                setLoading(false);
-                return;
-            }
-
-            // Crear nuevo usuario con rol CLIENTE por defecto
-            const nuevoUsuario = {
-                username: formData.nombre,
-                email: formData.email,
-                password: formData.password,
-                rol: 'CLIENTE'
-            };
-
-            ventasService.guardarUsuario(nuevoUsuario);
-            
-            // Auto-login después del registro
-            login('token-falso-cliente', nuevoUsuario);
-            navigate('/'); // Redirige al inicio
-            setLoading(false);
-        }, 800);
-        // -------------------------------------------------------------------
-
-        /* --- LÓGICA REAL (Descomentar cuando Spring Boot esté listo) ---
         try {
+            
             await registerUser(formData);
-            // Si el registro es exitoso, podrías loguearlo directo o mandarlo al login
-            navigate('/login'); 
+            
+            
+            const loginExitoso = await login({ 
+                username: formData.email, 
+                password: formData.password 
+            });
+
+            if (loginExitoso) {
+                navigate('/');
+            } else {
+                navigate('/login');
+            }
         } catch (err) {
-            setError('Error al registrar el usuario. El correo podría estar en uso.');
+            setError('Error al registrar. El correo podría estar en uso o el servidor está inactivo.');
         } finally {
             setLoading(false);
         }
-        ------------------------------------------------------------------- */
     };
 
     return (

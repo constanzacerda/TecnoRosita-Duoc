@@ -2,8 +2,6 @@ import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { AuthContext } from '../context/AuthContext';
-import { ventasService } from '../services/ventasService';
-// import { loginUser } from '../services/authService';
 
 const LoginView = () => {
     const [credenciales, setCredenciales] = useState({ username: '', password: '' });
@@ -22,51 +20,20 @@ const LoginView = () => {
         setError(null);
         setLoading(true);
 
-        // --- SIMULACIÓN TEMPORAL (Borrar cuando conectemos Spring Boot) ---
-        setTimeout(() => {
-            // 1. Verificamos los roles fijos de administración
-            if (credenciales.username === 'admin' && credenciales.password === 'admin123') {
-                login('token-falso-admin', { username: 'Juan Carlos', rol: 'ADMIN', email: 'admin@tecnorosita.cl' });
-                navigate('/admin'); 
-                setLoading(false);
-                return;
-            } 
+        try {
             
-            if (credenciales.username === 'vendedor' && credenciales.password === 'vend123') {
-                login('token-falso-vendedor', { username: 'Constanza', rol: 'VENDEDOR', email: 'vendedor@tecnorosita.cl' });
-                navigate('/admin'); 
-                setLoading(false);
-                return;
-            }
-
-           
-            const usuariosGuardados = ventasService.obtenerUsuarios();
-            const usuarioEncontrado = usuariosGuardados.find(
-                u => (u.email === credenciales.username || u.username === credenciales.username) && u.password === credenciales.password
-            );
-
-            if (usuarioEncontrado) {
-                login(`token-falso-${usuarioEncontrado.id}`, usuarioEncontrado);
+            const exito = await login(credenciales);
+            
+            if (exito) {
                 navigate('/'); 
             } else {
                 setError('Credenciales inválidas. Verifica tu correo o contraseña.');
             }
-            
-            setLoading(false);
-        }, 800);
-        // -------------------------------------------------------------------
-
-        /* --- LÓGICA REAL (Descomentar cuando Spring Boot esté listo) ---
-        try {
-            const data = await loginUser(credenciales);
-            login(data.token, data.usuario); 
-            navigate('/'); 
         } catch (err) {
-            setError('Credenciales inválidas o error de conexión con el servidor.');
+            setError('Error de conexión con el servidor de TecnoRosita.');
         } finally {
             setLoading(false);
         }
-        ------------------------------------------------------------------- */
     };
 
     return (

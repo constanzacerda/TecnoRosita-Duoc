@@ -23,8 +23,16 @@ const MenuNavegacion = () => {
                         <Nav.Link as={Link} to="/categorias" className="text-light-hover">Catálogo</Nav.Link>
                         <Nav.Link as={Link} to="/blog" className="text-light-hover">Blog</Nav.Link>
                         <Nav.Link as={Link} to="/contacto" className="text-light-hover">Contacto</Nav.Link>
-                        {user && user.rol === 'ADMIN' && (<Nav.Link as={Link} to="/admin" className="text-info fw-bold">Dashboard Admin</Nav.Link>)}
-                        {user && (user.rol === 'ADMIN' || user.rol === 'VENDEDOR') && (<Nav.Link as={Link} to="/admin/productos" className="text-info fw-bold">Gestión de Tienda</Nav.Link>)}
+                        
+                        {/* IE3.3.3: Renderizado Condicional - Solo visible para ADMINISTRADOR */}
+                        {user && user.rol === 'ADMINISTRADOR' && (
+                            <Nav.Link as={Link} to="/admin" className="text-info fw-bold">Dashboard Admin</Nav.Link>
+                        )}
+                        
+                        {/* IE3.3.3: Renderizado Condicional - Visible para ADMINISTRADOR y VENDEDOR */}
+                        {user && (user.rol === 'ADMINISTRADOR' || user.rol === 'VENDEDOR') && (
+                            <Nav.Link as={Link} to="/admin/productos" className="text-info fw-bold">Gestión de Tienda</Nav.Link>
+                        )}
                     </Nav>
                     <Nav className="align-items-center gap-3 mt-3 mt-lg-0">
                         <Nav.Link as={Link} to="/carrito" className="text-warning d-flex align-items-center gap-1 p-0 m-0">
@@ -34,7 +42,7 @@ const MenuNavegacion = () => {
                             {user ? (
                                 <>
                                     <span className="text-light small text-center text-lg-start me-lg-2">
-                                        Hola, <b>{user.username}</b> <span className="text-warning">({user.rol})</span>
+                                        Hola, <b>{user.username || user.sub}</b> <span className="text-warning">({user.rol})</span>
                                     </span>
                                     <Button variant="outline-danger" size="sm" className="fw-bold" onClick={handleLogout}>Cerrar Sesión</Button>
                                 </>

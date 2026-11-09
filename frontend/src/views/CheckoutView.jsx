@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getCart, clearCart, ventasService } from '../services/ventasService';
+import { getCart, clearCart } from '../services/ventasService';
+import api from '../services/api'; 
 import { Container, Row, Col, Card, Form, Button, Badge, Alert } from 'react-bootstrap';
 import ResumenOrden from '../components/ResumenOrden';
 
@@ -16,6 +17,7 @@ export default function CheckoutView() {
         metodoPago: 'transferencia'
     });
     const [orderId, setOrderId] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,7 +41,8 @@ export default function CheckoutView() {
         setStep(2);
     };
 
-    const handleFinalizeOrder = () => {
+    const handleFinalizeOrder = async () => {
+        setLoading(true);
         const subtotal = cart.reduce((acc, item) => {
             const precio = formData.metodoPago === 'transferencia' 
                 ? (item.precioTransferencia || item.precio || 0) 
@@ -47,18 +50,34 @@ export default function CheckoutView() {
             return acc + (precio * item.qty);
         }, 0);
 
+        
         const nuevaOrden = {
-            usuario: { nombre: formData.nombre, email: formData.email },
+            nombreCliente: formData.nombre,
+            emailCliente: formData.email,
             direccion: `${formData.direccion}, ${formData.comuna}`,
             metodoPago: formData.metodoPago,
-            productos: cart,
-            total: subtotal
+            total: subtotal,
+            detalles: cart.map(item => ({
+                productoId: item.id,
+                cantidad: item.qty,
+                precioUnitario: (formData.metodoPago === 'transferencia' ? (item.precioTransferencia || item.precio) : (item.precioNormal || item.precio))
+            }))
         };
 
-        const ordenGuardada = ventasService.crearOrden(nuevaOrden);
-        setOrderId(ordenGuardada.id);
-        clearCart(); 
-        setStep(3); 
+        try {
+            
+            const response = await api.post('/boletas', nuevaOrden);
+            
+            
+            setOrderId(response.data?.id || Math.floor(Math.random() * 1000000));
+            clearCart(); 
+            setStep(3); 
+        } catch (error) {
+            console.error("Error procesando compra", error);
+            alert("No se pudo procesar la compra. Verifica tu conexión o intenta iniciar sesión nuevamente.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -81,7 +100,7 @@ export default function CheckoutView() {
                         <div className="bg-black p-3 rounded border border-secondary mb-4 text-start d-inline-block mx-auto" style={{minWidth: '300px'}}>
                             <div className="d-flex justify-content-between mb-2">
                                 <span className="text-muted">Número de Orden:</span>
-                                <span className="fw-bold text-warning">{orderId}</span>
+                                <span className="fw-bold text-warning">#{orderId}</span>
                             </div>
                             <div className="d-flex justify-content-between mb-2">
                                 <span className="text-muted">Correo de contacto:</span>
@@ -112,7 +131,7 @@ export default function CheckoutView() {
                             <div className="d-flex justify-content-between align-items-center mb-4 border-bottom border-secondary pb-3">
                                 <h4 className="mb-0 fs-5 fw-bold text-warning">
                                     {step === 1 ? 'Información de Envío' : '2. Método de Pago y Confirmación'}
-                                </h4>
+                               </h4>
                                 <Badge bg={step === 1 ? 'warning' : 'success'} className="text-dark fw-bold">
                                     Paso {step} de 2
                                 </Badge>
@@ -219,11 +238,11 @@ export default function CheckoutView() {
                                     </Form.Group>
 
                                     <div className="d-flex gap-2">
-                                        <Button variant="outline-light" className="w-50 border-secondary" onClick={() => setStep(1)}>
+                                        <Button variant="outline-light" className="w-50 border-secondary" onClick={() => setStep(1)} disabled={loading}>
                                             ← Volver a Envío
                                         </Button>
-                                        <Button variant="warning" className="w-50 text-dark fw-bold" onClick={handleFinalizeOrder}>
-                                            Confirmar y Pagar 🔒
+                                        <Button variant="warning" className="w-50 text-dark fw-bold" onClick={handleFinalizeOrder} disabled={loading}>
+                                            {loading ? 'Procesando...' : 'Confirmar y Pagar 🔒'}
                                         </Button>
                                     </div>
                                 </div>
