@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" width="1400" height="700">
+<defs>
+  <radialGradient id="b3" cx="60%" cy="40%" r="70%"><stop offset="0%" stop-color="#0e0c1a"/><stop offset="55%" stop-color="#080612"/><stop offset="100%" stop-color="#030208"/></radialGradient>
+  <radialGradient id="gl3" cx="65%" cy="35%" r="50%"><stop offset="0%" stop-color="#2cc8ba" stop-opacity=".05"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+  <filter id="m1"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="m2"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="bx10"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="bx5"><feGaussianBlur stdDeviation="5"/></filter>
+  <linearGradient id="desk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0c0a16"/><stop offset="100%" stop-color="#06040e"/></linearGradient>
+</defs>
+
+<rect width="1400" height="700" fill="url(#b3)"/>
+<rect width="1400" height="700" fill="url(#gl3)"/>
+
+<!-- PARED con paneles -->
+<rect x="500" y="0" width="900" height="420" fill="#08060e" opacity=".5"/>
+<!-- Paneles perforados (pegboard) -->
+<g fill="#12101e" opacity=".25">
+  <circle cx="560" cy="60" r="3"/><circle cx="600" cy="60" r="3"/><circle cx="640" cy="60" r="3"/><circle cx="680" cy="60" r="3"/><circle cx="720" cy="60" r="3"/><circle cx="760" cy="60" r="3"/><circle cx="800" cy="60" r="3"/><circle cx="840" cy="60" r="3"/><circle cx="880" cy="60" r="3"/><circle cx="920" cy="60" r="3"/><circle cx="960" cy="60" r="3"/><circle cx="1000" cy="60" r="3"/><circle cx="1040" cy="60" r="3"/><circle cx="1080" cy="60" r="3"/><circle cx="1120" cy="60" r="3"/><circle cx="1160" cy="60" r="3"/><circle cx="1200" cy="60" r="3"/><circle cx="1240" cy="60" r="3"/><circle cx="1280" cy="60" r="3"/><circle cx="1320" cy="60" r="3"/><circle cx="1360" cy="60" r="3"/>
+  <circle cx="560" cy="100" r="3"/><circle cx="600" cy="100" r="3"/><circle cx="640" cy="100" r="3"/><circle cx="680" cy="100" r="3"/><circle cx="720" cy="100" r="3"/><circle cx="760" cy="100" r="3"/><circle cx="800" cy="100" r="3"/><circle cx="840" cy="100" r="3"/><circle cx="880" cy="100" r="3"/><circle cx="920" cy="100" r="3"/><circle cx="960" cy="100" r="3"/><circle cx="1000" cy="100" r="3"/><circle cx="1040" cy="100" r="3"/><circle cx="1080" cy="100" r="3"/><circle cx="1120" cy="100" r="3"/><circle cx="1160" cy="100" r="3"/><circle cx="1200" cy="100" r="3"/><circle cx="1240" cy="100" r="3"/><circle cx="1280" cy="100" r="3"/><circle cx="1320" cy="100" r="3"/><circle cx="1360" cy="100" r="3"/>
+  <circle cx="560" cy="140" r="3"/><circle cx="600" cy="140" r="3"/><circle cx="640" cy="140" r="3"/><circle cx="680" cy="140" r="3"/><circle cx="720" cy="140" r="3"/><circle cx="760" cy="140" r="3"/><circle cx="800" cy="140" r="3"/><circle cx="840" cy="140" r="3"/><circle cx="880" cy="140" r="3"/><circle cx="920" cy="140" r="3"/><circle cx="960" cy="140" r="3"/><circle cx="1000" cy="140" r="3"/><circle cx="1040" cy="140" r="3"/><circle cx="1080" cy="140" r="3"/><circle cx="1120" cy="140" r="3"/><circle cx="1160" cy="140" r="3"/><circle cx="1200" cy="140" r="3"/><circle cx="1240" cy="140" r="3"/><circle cx="1280" cy="140" r="3"/><circle cx="1320" cy="140" r="3"/><circle cx="1360" cy="140" r="3"/>
+</g>
+
+<!-- AUDÍFONOS colgados en la pared -->
+<g transform="translate(1280,50)">
+  <circle cx="0" cy="0" r="6" fill="#1a1828" stroke="#2a2840" stroke-width="1"/>
+  <path d="M-30,25 Q-35,-18 0,-32 Q35,-18 30,25" stroke="#141220" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <rect x="-38" y="16" width="22" height="40" rx="10" fill="#0e0c18" stroke="#1e1a2e" stroke-width="1"/>
+  <rect x="16" y="16" width="22" height="40" rx="10" fill="#0e0c18" stroke="#1e1a2e" stroke-width="1"/>
+  <rect x="-34" y="24" width="14" height="24" rx="5" fill="#080610"/>
+  <rect x="20" y="24" width="14" height="24" rx="5" fill="#080610"/>
+  <line x1="-36" y1="26" x2="-36" y2="44" stroke="#2cc8ba" stroke-width="1.5" filter="url(#m2)" opacity=".45"/>
+  <line x1="36" y1="26" x2="36" y2="44" stroke="#2cc8ba" stroke-width="1.5" filter="url(#m2)" opacity=".45"/>
+</g>
+
+<!-- CONTROL colgado en pared -->
+<g transform="translate(1140,90) scale(.55)">
+  <circle cx="0" cy="-35" r="6" fill="#1a1828" stroke="#2a2840" stroke-width="1"/>
+  <line x1="0" y1="-30" x2="0" y2="-10" stroke="#1a1828" stroke-width="1.5"/>
+  <ellipse cx="0" cy="15" rx="60" ry="28" fill="#141220" stroke="#1e1a2e" stroke-width="1.5"/>
+  <path d="M-50,10 Q-65,35 -55,60 Q-45,70 -30,55 Q-25,38 -35,14Z" fill="#121020"/>
+  <path d="M50,10 Q65,35 55,60 Q45,70 30,55 Q25,38 35,14Z" fill="#121020"/>
+  <circle cx="-25" cy="22" r="8" fill="#080610"/><circle cx="25" cy="22" r="8" fill="#080610"/>
+  <circle cx="0" cy="30" r="3" fill="#2cc8ba" filter="url(#m2)" opacity=".35"/>
+</g>
+
+<!-- DESK -->
+<rect x="0" y="420" width="1400" height="280" fill="url(#desk3)"/>
+<line x1="0" y1="420" x2="1400" y2="420" stroke="#1e1a2e" stroke-width="1.5" opacity=".4"/>
+
+<!-- ====== MONITOR PRINCIPAL ULTRAWIDE ====== -->
+<g transform="translate(700,55)">
+  <!-- Stand -->
+  <rect x="220" y="305" width="55" height="40" rx="3" fill="#0c0a16" stroke="#1e1a2e" stroke-width="1"/>
+  <ellipse cx="248" cy="350" rx="75" ry="10" fill="#06040e" stroke="#1e1a2e" stroke-width="1"/>
+  <!-- Monitor -->
+  <rect x="-10" y="0" width="515" height="280" rx="8" fill="#0a0816" stroke="#1e1a2e" stroke-width="2"/>
+  <rect x="2" y="8" width="491" height="258" rx="3" fill="#050410"/>
+  
+  <!-- PANTALLA: Racing game nocturno -->
+  <clipPath id="sc3"><rect x="6" y="12" width="483" height="248" rx="2"/></clipPath>
+  <g clip-path="url(#sc3)">
+    <rect x="0" y="10" width="500" height="260" fill="#0a0820"/>
+    <!-- Cielo nocturno ciudad -->
+    <rect x="0" y="10" width="500" height="110" fill="#0c1030"/>
+    <!-- Edificios skyline -->
+    <g fill="#0a0820" opacity=".9">
+      <rect x="20" y="70" width="22" height="55"/><rect x="50" y="55" width="18" height="70"/>
+      <rect x="76" y="65" width="28" height="60"/><rect x="112" y="50" width="20" height="75"/>
+      <rect x="140" y="60" width="32" height="65"/><rect x="180" y="45" width="24" height="80"/>
+      <rect x="212" y="62" width="18" height="63"/><rect x="240" y="52" width="30" height="73"/>
+      <rect x="280" y="58" width="22" height="67"/><rect x="310" y="42" width="26" height="83"/>
+      <rect x="344" y="55" width="20" height="70"/><rect x="372" y="65" width="32" height="60"/>
+      <rect x="412" y="48" width="22" height="77"/><rect x="442" y="60" width="28" height="65"/>
+    </g>
+    <!-- Ventanitas edificios -->
+    <g fill="#2cc8ba" opacity=".12">
+      <rect x="25" y="78" width="4" height="3"/><rect x="33" y="78" width="4" height="3"/>
+      <rect x="25" y="85" width="4" height="3"/><rect x="33" y="85" width="4" height="3"/>
+      <rect x="55" y="62" width="3" height="3"/><rect x="55" y="68" width="3" height="3"/>
+      <rect x="145" y="68" width="4" height="3"/><rect x="155" y="68" width="4" height="3"/>
+      <rect x="185" y="52" width="4" height="3"/><rect x="185" y="58" width="4" height="3"/>
+      <rect x="315" y="50" width="4" height="3"/><rect x="323" y="50" width="4" height="3"/>
+      <rect x="315" y="56" width="4" height="3"/><rect x="323" y="56" width="4" height="3"/>
+      <rect x="417" y="55" width="3" height="3"/><rect x="417" y="62" width="3" height="3"/>
+    </g>
+    <g fill="#d4a93c" opacity=".1">
+      <rect x="82" y="72" width="4" height="3"/><rect x="90" y="72" width="4" height="3"/>
+      <rect x="248" y="60" width="4" height="3"/><rect x="256" y="60" width="4" height="3"/>
+      <rect x="378" y="72" width="4" height="3"/><rect x="386" y="72" width="4" height="3"/>
+      <rect x="448" y="68" width="4" height="3"/><rect x="456" y="68" width="4" height="3"/>
+    </g>
+    <!-- CARRETERA en perspectiva -->
+    <polygon points="130,260 370,260 320,125 180,125" fill="#141030"/>
+    <polygon points="180,260 320,260 300,125 200,125" fill="#1a1440"/>
+    <!-- Líneas de carretera -->
+    <line x1="250" y1="135" x2="250" y2="158" stroke="#d4a93c" stroke-width="2" opacity=".5"/>
+    <line x1="250" y1="170" x2="250" y2="200" stroke="#d4a93c" stroke-width="2.5" opacity=".5"/>
+    <line x1="250" y1="215" x2="250" y2="255" stroke="#d4a93c" stroke-width="3" opacity=".5"/>
+    <!-- Carro del jugador -->
+    <g transform="translate(235,195)">
+      <rect x="-20" y="0" width="40" height="48" rx="5" fill="#cc2020"/>
+      <rect x="-16" y="5" width="32" height="16" rx="2" fill="#1a1030"/>
+      <!-- Luces traseras -->
+      <rect x="-18" y="42" width="12" height="5" rx="1" fill="#ff3030" filter="url(#m2)" opacity=".8"/>
+      <rect x="6" y="42" width="12" height="5" rx="1" fill="#ff3030" filter="url(#m2)" opacity=".8"/>
+    </g>
+    <!-- Líneas de velocidad -->
+    <line x1="90" y1="160" x2="40" y2="260" stroke="#2cc8ba" stroke-width="1" opacity=".12"/>
+    <line x1="410" y1="160" x2="460" y2="260" stroke="#2cc8ba" stroke-width="1" opacity=".12"/>
+    <line x1="120" y1="170" x2="80" y2="260" stroke="#d4a93c" stroke-width=".8" opacity=".08"/>
+    <line x1="380" y1="170" x2="420" y2="260" stroke="#d4a93c" stroke-width=".8" opacity=".08"/>
+    <!-- HUD -->
+    <text x="15" y="26" fill="#2cc8ba" font-family="monospace" font-size="9" opacity=".55">LAP 3/5</text>
+    <text x="15" y="38" fill="#fff" font-family="monospace" font-size="7" opacity=".35">POS: 1st</text>
+    <text x="400" y="26" fill="#d4a93c" font-family="monospace" font-size="10" opacity=".55">285 km/h</text>
+    <!-- Barra boost -->
+    <rect x="15" y="240" width="80" height="5" rx="2" fill="#0c0820" stroke="#2cc8ba" stroke-width=".5" opacity=".4"/>
+    <rect x="15" y="240" width="55" height="5" rx="2" fill="#2cc8ba" opacity=".35"/>
+    <text x="18" y="237" fill="#2cc8ba" font-family="monospace" font-size="6" opacity=".4">NITRO</text>
+  </g>
+  
+  <!-- RGB bajo pantalla -->
+  <rect x="8" y="262" width="479" height="3" rx="1" fill="#2cc8ba" filter="url(#m2)" opacity=".45"/>
+</g>
+
+<!-- ====== LAPTOP SECUNDARIA (izquierda) ====== -->
+<g transform="translate(580,240) rotate(18) scale(.5)">
+  <rect x="0" y="0" width="210" height="138" rx="6" fill="#0a0816" stroke="#1e1a2e" stroke-width="1.5"/>
+  <rect x="8" y="8" width="194" height="118" rx="2" fill="#050410"/>
+  <rect x="14" y="14" width="182" height="106" fill="#0c0a1a"/>
+  <!-- Contenido stream/chat -->
+  <rect x="20" y="20" width="75" height="8" rx="2" fill="#2cc8ba" opacity=".15"/>
+  <rect x="20" y="34" width="120" height="5" rx="1" fill="#141030" opacity=".5"/>
+  <rect x="20" y="44" width="100" height="5" rx="1" fill="#141030" opacity=".5"/>
+  <rect x="20" y="54" width="130" height="5" rx="1" fill="#141030" opacity=".5"/>
+  <rect x="20" y="64" width="90" height="5" rx="1" fill="#141030" opacity=".5"/>
+  <rect x="20" y="80" width="160" height="32" rx="3" fill="#0a0818"/>
+  <!-- Teclado -->
+  <path d="M-8,138 L218,138 L236,185 L-26,185Z" fill="#0c0a16" stroke="#1e1a2e" stroke-width="1"/>
+</g>
+
+<!-- ====== GAMER (silueta de espaldas) ====== -->
+<g transform="translate(890,200)">
+  <!-- Respaldo silla gaming -->
+  <path d="M-55,85 Q-60,20 -48,-30 Q-30,-55 30,-55 Q58,-30 60,20 Q65,85 55,140 L-55,140Z" fill="#08060e" stroke="#141028" stroke-width="1" opacity=".7"/>
+  <!-- Almohadilla cervical silla -->
+  <ellipse cx="0" cy="-30" rx="28" ry="8" fill="#0c0a16" stroke="#141028" stroke-width=".8"/>
+  <!-- Cabeza -->
+  <ellipse cx="0" cy="-50" rx="20" ry="24" fill="#0e0c1a"/>
+  <!-- HEADSET -->
+  <path d="M-24,-55 Q-28,-78 0,-85 Q28,-78 24,-55" stroke="#121020" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M-24,-55 Q-28,-78 0,-85 Q28,-78 24,-55" stroke="#1a1830" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <rect x="-30" y="-62" width="16" height="28" rx="7" fill="#0e0c18" stroke="#1a1830" stroke-width="1"/>
+  <rect x="14" y="-62" width="16" height="28" rx="7" fill="#0e0c18" stroke="#1a1830" stroke-width="1"/>
+  <line x1="-28" y1="-58" x2="-28" y2="-38" stroke="#2cc8ba" stroke-width="1.5" filter="url(#m2)" opacity=".4"/>
+  <line x1="28" y1="-58" x2="28" y2="-38" stroke="#2cc8ba" stroke-width="1.5" filter="url(#m2)" opacity=".4"/>
+  <!-- Boom mic -->
+  <path d="M-28,-45 Q-42,-35 -40,-22" stroke="#1a1830" stroke-width="2" fill="none"/>
+  <circle cx="-40" cy="-20" r="3.5" fill="#0e0c18" stroke="#1a1830" stroke-width=".8"/>
+  <!-- Hombros/cuerpo -->
+  <path d="M-38,-15 Q-52,30 -55,105 L55,105 Q52,30 38,-15 Q18,-5 0,-5 Q-18,-5 -38,-15Z" fill="#0c0a18" opacity=".8"/>
+  <!-- Brazos hacia escritorio -->
+  <path d="M-42,45 Q-58,90 -68,155 Q-62,162 -52,158" fill="#0c0a18" opacity=".65"/>
+  <path d="M42,45 Q58,90 78,155 Q82,162 72,158" fill="#0c0a18" opacity=".65"/>
+</g>
+
+<!-- ====== TECLADO en escritorio ====== -->
+<g transform="translate(830,440) scale(.72)">
+  <rect x="0" y="0" width="270" height="82" rx="6" fill="#0a0816" stroke="#141028" stroke-width="1.5"/>
+  <g fill="#141030" opacity=".55">
+    <rect x="8" y="7" width="14" height="12" rx="2"/><rect x="25" y="7" width="14" height="12" rx="2"/>
+    <rect x="42" y="7" width="14" height="12" rx="2"/><rect x="59" y="7" width="14" height="12" rx="2"/>
+    <rect x="76" y="7" width="14" height="12" rx="2"/><rect x="93" y="7" width="14" height="12" rx="2"/>
+    <rect x="110" y="7" width="14" height="12" rx="2"/><rect x="127" y="7" width="14" height="12" rx="2"/>
+    <rect x="144" y="7" width="14" height="12" rx="2"/><rect x="161" y="7" width="14" height="12" rx="2"/>
+    <rect x="178" y="7" width="14" height="12" rx="2"/><rect x="195" y="7" width="14" height="12" rx="2"/>
+    <rect x="212" y="7" width="50" height="12" rx="2"/>
+    <rect x="8" y="22" width="20" height="12" rx="2"/><rect x="31" y="22" width="14" height="12" rx="2"/>
+    <rect x="48" y="22" width="14" height="12" rx="2"/><rect x="65" y="22" width="14" height="12" rx="2"/>
+    <rect x="82" y="22" width="14" height="12" rx="2"/><rect x="99" y="22" width="14" height="12" rx="2"/>
+    <rect x="116" y="22" width="14" height="12" rx="2"/><rect x="133" y="22" width="14" height="12" rx="2"/>
+    <rect x="150" y="22" width="14" height="12" rx="2"/><rect x="167" y="22" width="14" height="12" rx="2"/>
+    <rect x="184" y="22" width="14" height="12" rx="2"/><rect x="201" y="22" width="61" height="26" rx="2"/>
+    <rect x="8" y="37" width="26" height="12" rx="2"/><rect x="37" y="37" width="14" height="12" rx="2"/>
+    <rect x="54" y="37" width="14" height="12" rx="2"/><rect x="71" y="37" width="14" height="12" rx="2"/>
+    <rect x="88" y="37" width="14" height="12" rx="2"/><rect x="105" y="37" width="14" height="12" rx="2"/>
+    <rect x="122" y="37" width="14" height="12" rx="2"/><rect x="139" y="37" width="14" height="12" rx="2"/>
+    <rect x="156" y="37" width="14" height="12" rx="2"/><rect x="173" y="37" width="14" height="12" rx="2"/>
+    <rect x="8" y="52" width="32" height="12" rx="2"/><rect x="43" y="52" width="14" height="12" rx="2"/>
+    <rect x="60" y="52" width="120" height="12" rx="2"/>
+    <rect x="183" y="52" width="14" height="12" rx="2"/><rect x="200" y="52" width="14" height="12" rx="2"/>
+    <rect x="217" y="52" width="14" height="12" rx="2"/><rect x="234" y="52" width="28" height="12" rx="2"/>
+  </g>
+  <!-- RGB animated underglow -->
+  <rect x="0" y="67" width="270" height="3" rx="1" opacity=".4">
+    <animate attributeName="fill" values="#2cc8ba;#b69ce8;#d4a93c;#2cc8ba" dur="4s" repeatCount="indefinite"/>
+  </rect>
+</g>
+
+<!-- ====== MOUSE ====== -->
+<g transform="translate(1130,445)">
+  <!-- Mousepad -->
+  <rect x="-18" y="-8" width="60" height="60" rx="4" fill="#06040e" stroke="#141028" stroke-width=".5" opacity=".6"/>
+  <ellipse cx="12" cy="20" rx="14" ry="24" fill="#0a0816" stroke="#141028" stroke-width="1"/>
+  <ellipse cx="12" cy="6" rx="10" ry="8" fill="#0e0c1a"/>
+  <line x1="12" y1="0" x2="12" y2="12" stroke="#141028" stroke-width=".8"/>
+  <circle cx="12" cy="7" r="2.5" fill="#d4a93c" filter="url(#m2)" opacity=".45"/>
+</g>
+
+<!-- ====== PC TOWER (derecha) ====== -->
+<g transform="translate(1240,250)">
+  <rect x="0" y="0" width="85" height="175" rx="6" fill="#08060e" stroke="#141028" stroke-width="1.5"/>
+  <!-- Panel de vidrio -->
+  <rect x="8" y="10" width="69" height="135" rx="3" fill="#060410" opacity=".8" stroke="#0e0c1a" stroke-width=".5"/>
+  <!-- Componentes internos -->
+  <rect x="14" y="22" width="55" height="10" rx="2" fill="#0c0a18"/>
+  <rect x="14" y="40" width="55" height="30" rx="2" fill="#0c0a18"/>
+  <!-- Fan principal -->
+  <circle cx="42" cy="55" r="13" fill="#08060e" stroke="#121020" stroke-width="1"/>
+  <circle cx="42" cy="55" r="9" fill="none" stroke="#2cc8ba" stroke-width=".6" opacity=".3"/>
+  <circle cx="42" cy="55" r="5" fill="none" stroke="#2cc8ba" stroke-width=".4" opacity=".2"/>
+  <!-- Aspas fan -->
+  <line x1="42" y1="43" x2="42" y2="67" stroke="#121020" stroke-width="1.5" opacity=".5"/>
+  <line x1="30" y1="55" x2="54" y2="55" stroke="#121020" stroke-width="1.5" opacity=".5"/>
+  <!-- GPU slots -->
+  <rect x="14" y="78" width="55" height="7" rx="1" fill="#0c0a18"/>
+  <rect x="14" y="88" width="55" height="7" rx="1" fill="#0c0a18"/>
+  <rect x="14" y="98" width="55" height="7" rx="1" fill="#0c0a18"/>
+  <!-- RAM glow -->
+  <rect x="60" y="22" width="3" height="10" rx="1" fill="#2cc8ba" filter="url(#m2)" opacity=".2"/>
+  <rect x="55" y="22" width="3" height="10" rx="1" fill="#2cc8ba" filter="url(#m2)" opacity=".15"/>
+  <!-- Fan glow -->
+  <circle cx="42" cy="55" r="14" fill="none" stroke="#2cc8ba" stroke-width="1.5" filter="url(#m2)" opacity=".2"/>
+  <!-- Front panel -->
+  <circle cx="42" cy="130" r="3.5" fill="#2cc8ba" filter="url(#m2)" opacity=".35"/>
+  <rect x="35" y="140" width="14" height="3" rx="1" fill="#121020"/>
+  <!-- Side RGB strip -->
+  <line x1="5" y1="15" x2="5" y2="140" stroke="#2cc8ba" stroke-width="2" filter="url(#m1)" opacity=".2"/>
+</g>
+
+<!-- ====== LED STRIP en borde escritorio ====== -->
+<line x1="500" y1="422" x2="1400" y2="422" stroke="#2cc8ba" stroke-width="2" filter="url(#m1)" opacity=".2"/>
+
+<!-- Reflejo monitor en escritorio -->
+<ellipse cx="960" cy="470" rx="250" ry="40" fill="#2cc8ba" opacity=".02" filter="url(#bx10)"/>
+
+<!-- Partículas -->
+<circle cx="600" cy="50" r="1.5" fill="#2cc8ba" opacity=".35"><animate attributeName="opacity" values=".15;.45;.15" dur="3s" repeatCount="indefinite"/></circle>
+<circle cx="1350" cy="180" r="1.2" fill="#d4a93c" opacity=".3"><animate attributeName="opacity" values=".1;.4;.1" dur="4s" repeatCount="indefinite"/></circle>
+<circle cx="700" cy="400" r="1" fill="#2cc8ba" opacity=".25"/>
+<circle cx="1380" cy="350" r="1.5" fill="#d4a93c" opacity=".2"/>
+</svg>

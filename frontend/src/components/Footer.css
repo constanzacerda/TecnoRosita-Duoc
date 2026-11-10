@@ -1,0 +1,11 @@
+.footer-container {
+  background-color: #1a0a3a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.payment-icons span {
+  font-size: 0.9rem;
+  color: #d1d1d1;
+}
+.social-icons a:hover {
+  color: #ffc107 !important;
+}

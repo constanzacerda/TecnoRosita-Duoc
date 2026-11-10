@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" width="1400" height="700">
+<defs>
+  <radialGradient id="b1" cx="55%" cy="40%" r="70%"><stop offset="0%" stop-color="#0a1e3d"/><stop offset="60%" stop-color="#061428"/><stop offset="100%" stop-color="#020810"/></radialGradient>
+  <radialGradient id="gl1" cx="62%" cy="35%" r="45%"><stop offset="0%" stop-color="#1a6bff" stop-opacity=".12"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+  <filter id="f1"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="f2"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="blur12"><feGaussianBlur stdDeviation="12"/></filter>
+  <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+  <linearGradient id="deskG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0c1a30"/><stop offset="100%" stop-color="#081220"/></linearGradient>
+</defs>
+
+<!-- SKY -->
+<rect width="1400" height="700" fill="url(#b1)"/>
+<rect width="1400" height="700" fill="url(#gl1)"/>
+
+<!-- DESK -->
+<rect x="0" y="440" width="1400" height="260" fill="url(#deskG1)"/>
+<line x1="0" y1="440" x2="1400" y2="440" stroke="#1a3560" stroke-width="2" opacity=".4"/>
+
+<!-- ====== MONITOR GRANDE (centro-derecha) ====== -->
+<g transform="translate(700,60)">
+  <!-- Pie del monitor -->
+  <rect x="210" y="335" width="60" height="50" rx="4" fill="#0c1828" stroke="#1a3050" stroke-width="1"/>
+  <ellipse cx="240" cy="390" rx="90" ry="12" fill="#081420" stroke="#1a3050" stroke-width="1"/>
+  <!-- Cuerpo monitor -->
+  <rect x="0" y="0" width="480" height="310" rx="10" fill="#0a1425" stroke="#1a3a65" stroke-width="2"/>
+  <!-- Borde pantalla -->
+  <rect x="10" y="8" width="460" height="286" rx="4" fill="#040c18"/>
+  <!-- PANTALLA - Paisaje de juego épico -->
+  <rect x="16" y="14" width="448" height="272" rx="2" fill="#0b1a35"/>
+  <!-- Cielo del juego -->
+  <rect x="16" y="14" width="448" height="135" fill="#102850" rx="2"/>
+  <rect x="16" y="14" width="448" height="70" fill="#1a3a70" opacity=".6" rx="2"/>
+  <!-- Luna/Sol -->
+  <circle cx="360" cy="70" r="40" fill="#3388dd" opacity=".12" filter="url(#blur12)"/>
+  <circle cx="360" cy="70" r="18" fill="#5599ee" opacity=".5"/>
+  <circle cx="360" cy="70" r="10" fill="#88ccff" opacity=".4"/>
+  <!-- Nubes -->
+  <ellipse cx="160" cy="50" rx="70" ry="14" fill="#1a3060" opacity=".5"/>
+  <ellipse cx="300" cy="65" rx="50" ry="10" fill="#1a3560" opacity=".4"/>
+  <ellipse cx="420" cy="45" rx="40" ry="8" fill="#15284a" opacity=".5"/>
+  <!-- Montañas lejanas -->
+  <polygon points="16,180 80,90 140,130 200,75 260,120 340,80 420,110 464,95 464,200 16,200" fill="#0a1a38"/>
+  <!-- Montañas cercanas -->
+  <polygon points="16,220 60,160 140,190 220,140 300,180 380,155 464,170 464,260 16,260" fill="#071528"/>
+  <!-- Lago/reflejo -->
+  <rect x="16" y="230" width="448" height="56" fill="#081830" opacity=".7"/>
+  <line x1="60" y1="245" x2="180" y2="245" stroke="#2266aa" stroke-width=".5" opacity=".3"/>
+  <line x1="200" y1="255" x2="350" y2="255" stroke="#2266aa" stroke-width=".5" opacity=".2"/>
+  <!-- Personaje en pantalla -->
+  <g transform="translate(240,170)">
+    <circle cx="0" cy="-18" r="5" fill="#ddd"/>
+    <path d="M-8,-10 L8,-10 L10,15 L-10,15Z" fill="#2244aa"/>
+    <rect x="-5" y="15" width="4" height="12" fill="#1a2a50"/><rect x="1" y="15" width="4" height="12" fill="#1a2a50"/>
+    <line x1="10" y1="-5" x2="22" y2="-18" stroke="#5599ff" stroke-width="2"/>
+  </g>
+  <!-- Indicador RGB bajo pantalla -->
+  <rect x="20" y="282" width="440" height="3" rx="1" fill="#1a6bff" filter="url(#f2)" opacity=".6"/>
+  <!-- Logo monitor -->
+  <rect x="210" y="298" width="60" height="6" rx="2" fill="#1a3050" opacity=".4"/>
+</g>
+
+<!-- ====== CONSOLA PORTÁTIL (tipo Switch/3DS) manos sosteniéndola ====== -->
+<g transform="translate(480,260) rotate(-8)">
+  <!-- Mano izquierda -->
+  <path d="M-15,50 Q-30,30 -25,0 Q-20,-20 0,-15 Q5,0 5,50Z" fill="#c4a080" opacity=".55"/>
+  <path d="M-22,10 Q-30,-5 -18,-12" stroke="#b89070" stroke-width="3" fill="none" opacity=".4" stroke-linecap="round"/>
+  <path d="M-18,25 Q-28,15 -20,2" stroke="#b89070" stroke-width="2.5" fill="none" opacity=".35" stroke-linecap="round"/>
+  <!-- Cuerpo consola -->
+  <rect x="0" y="-30" width="200" height="120" rx="12" fill="#1a2a48" stroke="#2a4a78" stroke-width="2"/>
+  <!-- Pantalla central -->
+  <rect x="35" y="-20" width="130" height="85" rx="4" fill="#050e1e"/>
+  <rect x="40" y="-15" width="120" height="75" fill="#0a1830"/>
+  <!-- Mini juego en pantalla -->
+  <rect x="40" y="-15" width="120" height="35" fill="#102040"/>
+  <polygon points="50,40 80,10 110,30 140,5 160,20 160,60 40,60" fill="#081428"/>
+  <circle cx="130" cy="0" r="8" fill="#2266bb" opacity=".25" filter="url(#blur6)"/>
+  <circle cx="130" cy="0" r="4" fill="#4488dd" opacity=".4"/>
+  <!-- D-Pad izquierdo -->
+  <rect x="8" y="20" width="6" height="22" rx="2" fill="#0a1428"/>
+  <rect x="0" y="28" width="22" height="6" rx="2" fill="#0a1428"/>
+  <!-- Botones ABXY derecha -->
+  <circle cx="180" cy="20" r="5" fill="#0a1428"/><circle cx="190" cy="30" r="5" fill="#1a6bff" opacity=".4"/>
+  <circle cx="170" cy="30" r="5" fill="#0a1428"/><circle cx="180" cy="40" r="5" fill="#0a1428"/>
+  <!-- Joystick -->
+  <circle cx="15" cy="60" r="9" fill="#0a1428" stroke="#1a3050" stroke-width="1"/>
+  <circle cx="15" cy="60" r="5" fill="#122240"/>
+  <circle cx="185" cy="60" r="9" fill="#0a1428" stroke="#1a3050" stroke-width="1"/>
+  <circle cx="185" cy="60" r="5" fill="#122240"/>
+  <!-- LED indicador -->
+  <circle cx="100" cy="82" r="2.5" fill="#1a6bff" filter="url(#f2)"/>
+  <!-- Mano derecha -->
+  <path d="M205,50 Q220,30 215,0 Q210,-20 195,-15 Q190,0 192,50Z" fill="#c4a080" opacity=".55"/>
+  <path d="M212,10 Q220,-5 210,-12" stroke="#b89070" stroke-width="3" fill="none" opacity=".4" stroke-linecap="round"/>
+</g>
+
+<!-- ====== CONTROL PS5 sobre el escritorio ====== -->
+<g transform="translate(950,440) scale(1.3)">
+  <!-- Sombra -->
+  <ellipse cx="65" cy="75" rx="70" ry="10" fill="#04080f" opacity=".5" filter="url(#blur6)"/>
+  <!-- Cuerpo -->
+  <ellipse cx="65" cy="28" rx="72" ry="34" fill="#d8d8e8" stroke="#b0b0c0" stroke-width="1"/>
+  <!-- Grip izq -->
+  <path d="M0,16 Q-18,48 -8,80 Q2,92 18,72 Q22,50 12,20Z" fill="#d0d0e0" stroke="#b0b0c0" stroke-width="1"/>
+  <!-- Grip der -->
+  <path d="M130,16 Q148,48 138,80 Q128,92 112,72 Q108,50 118,20Z" fill="#d0d0e0" stroke="#b0b0c0" stroke-width="1"/>
+  <!-- Touchpad -->
+  <rect x="28" y="4" width="74" height="30" rx="7" fill="#b8b8ca" stroke="#a0a0b0" stroke-width=".8"/>
+  <!-- Sticks -->
+  <circle cx="32" cy="42" r="10" fill="#222238" stroke="#3a3a50" stroke-width="1"/><circle cx="32" cy="42" r="6" fill="#2a2a40"/>
+  <circle cx="98" cy="42" r="10" fill="#222238" stroke="#3a3a50" stroke-width="1"/><circle cx="98" cy="42" r="6" fill="#2a2a40"/>
+  <!-- Botones -->
+  <circle cx="108" cy="12" r="4" fill="#6688cc" opacity=".45"/>
+  <circle cx="118" cy="22" r="4" fill="#cc4444" opacity=".45"/>
+  <circle cx="98" cy="22" r="4" fill="#cc44aa" opacity=".4"/>
+  <circle cx="108" cy="32" r="4" fill="#44aa44" opacity=".4"/>
+  <!-- LED PS azul -->
+  <rect x="25" y="0" width="80" height="2" rx="1" fill="#1a6bff" filter="url(#f2)" opacity=".55"/>
+</g>
+
+<!-- ====== AUDÍFONOS gaming ====== -->
+<g transform="translate(1220,340)">
+  <!-- Diadema -->
+  <path d="M-38,30 Q-45,-30 0,-50 Q45,-30 38,30" stroke="#1a1a2e" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M-38,30 Q-45,-30 0,-50 Q45,-30 38,30" stroke="#2a2a48" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Copa izq -->
+  <rect x="-52" y="20" width="28" height="48" rx="12" fill="#141428" stroke="#2a2a48" stroke-width="1"/>
+  <rect x="-48" y="28" width="20" height="32" rx="8" fill="#0a0a18"/>
+  <!-- Copa der -->
+  <rect x="24" y="20" width="28" height="48" rx="12" fill="#141428" stroke="#2a2a48" stroke-width="1"/>
+  <rect x="28" y="28" width="20" height="32" rx="8" fill="#0a0a18"/>
+  <!-- RGB accent -->
+  <line x1="-50" y1="28" x2="-50" y2="56" stroke="#1a6bff" stroke-width="2" filter="url(#f2)" opacity=".5"/>
+  <line x1="50" y1="28" x2="50" y2="56" stroke="#1a6bff" stroke-width="2" filter="url(#f2)" opacity=".5"/>
+  <!-- Mic -->
+  <path d="M-48,50 Q-60,60 -58,75" stroke="#2a2a48" stroke-width="2.5" fill="none"/>
+  <circle cx="-58" cy="78" r="4" fill="#1a1a2e"/>
+</g>
+
+<!-- ====== LUZ AMBIENTAL reflejo azul en escritorio ====== -->
+<ellipse cx="900" cy="500" rx="300" ry="60" fill="#1a6bff" opacity=".04" filter="url(#blur12)"/>
+<ellipse cx="750" cy="480" rx="150" ry="40" fill="#1a6bff" opacity=".03" filter="url(#blur12)"/>
+
+<!-- ====== DECORACIÓN: Líneas neon sobre escritorio ====== -->
+<line x1="0" y1="442" x2="1400" y2="442" stroke="#1a6bff" stroke-width="1.5" filter="url(#f1)" opacity=".15"/>
+
+<!-- Partículas flotantes -->
+<circle cx="580" cy="100" r="2" fill="#4488ff" opacity=".5"><animate attributeName="opacity" values=".2;.6;.2" dur="3s" repeatCount="indefinite"/></circle>
+<circle cx="920" cy="80" r="1.5" fill="#00c8ff" opacity=".4"><animate attributeName="opacity" values=".1;.5;.1" dur="4s" repeatCount="indefinite"/></circle>
+<circle cx="1300" cy="200" r="2" fill="#4488ff" opacity=".3"><animate attributeName="opacity" values=".15;.5;.15" dur="3.5s" repeatCount="indefinite"/></circle>
+<circle cx="650" cy="380" r="1.5" fill="#1a6bff" opacity=".3"/>
+<circle cx="1350" cy="350" r="1" fill="#00c8ff" opacity=".4"/>
+
+<!-- Hexágonos decorativos -->
+<polygon points="620,50 634,42 648,50 648,66 634,74 620,66" fill="none" stroke="#1a6bff" stroke-width=".8" opacity=".08"/>
+<polygon points="1280,130 1294,122 1308,130 1308,146 1294,154 1280,146" fill="none" stroke="#00c8ff" stroke-width=".8" opacity=".06"/>
+</svg>
