@@ -1,10 +1,9 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import CheckoutView from '../views/CheckoutView';
-
 
 vi.mock('../services/api', () => ({
     default: {
@@ -13,28 +12,32 @@ vi.mock('../services/api', () => ({
 }));
 
 describe('Pruebas Unitarias - Módulo Checkout', () => {
-    
     beforeEach(() => {
         window.localStorage.clear();
-        window.alert = vi.fn(); 
+        window.alert = vi.fn();
         vi.clearAllMocks();
     });
 
     it('Debe renderizar el formulario de Checkout correctamente', () => {
-        
-        window.localStorage.setItem('tecnorosita_cart', JSON.stringify([{ id: 1, nombre: 'Test', qty: 1, precio: 100 }]));
-        
+        window.localStorage.setItem(
+            'tecnorosita_cart',
+            JSON.stringify([{ id: 1, nombre: 'Test', qty: 1, precio: 100 }])
+        );
+
         render(
             <MemoryRouter>
                 <CheckoutView />
             </MemoryRouter>
         );
         expect(screen.getByText('Finalizar Compra')).toBeInTheDocument();
-        expect(screen.getByText('Información de Envío')).toBeInTheDocument();
+        expect(screen.getByText(/Información de Envío/i)).toBeInTheDocument();
     });
 
     it('El estado del input "Nombre" debe actualizarse al escribir', () => {
-        window.localStorage.setItem('tecnorosita_cart', JSON.stringify([{ id: 1, nombre: 'Test', qty: 1, precio: 100 }]));
+        window.localStorage.setItem(
+            'tecnorosita_cart',
+            JSON.stringify([{ id: 1, nombre: 'Test', qty: 1, precio: 100 }])
+        );
         render(
             <MemoryRouter>
                 <CheckoutView />
@@ -46,18 +49,21 @@ describe('Pruebas Unitarias - Módulo Checkout', () => {
     });
 
     it('Debe prevenir el envío si los campos están vacíos y mostrar alerta', () => {
-        window.localStorage.setItem('tecnorosita_cart', JSON.stringify([{ id: 1, nombre: 'Test', qty: 1, precio: 100 }]));
+        window.localStorage.setItem(
+            'tecnorosita_cart',
+            JSON.stringify([{ id: 1, nombre: 'Test', qty: 1, precio: 100 }])
+        );
         render(
             <MemoryRouter>
                 <CheckoutView />
             </MemoryRouter>
         );
-        
+
         const botonSiguiente = screen.getByRole('button', { name: /Siguiente paso/i });
         fireEvent.submit(botonSiguiente);
-        
+
         expect(window.alert).toHaveBeenCalledWith('Por favor completa los campos obligatorios de envío.');
-        expect(screen.getByText('Información de Envío')).toBeInTheDocument();
+        expect(screen.getByText(/Información de Envío/i)).toBeInTheDocument();
     });
 
     it('Debe calcular el total y mostrar el paso de pago tras completar el formulario', () => {
@@ -82,8 +88,7 @@ describe('Pruebas Unitarias - Módulo Checkout', () => {
         fireEvent.submit(botonSiguiente);
 
         expect(screen.getByText('2. Método de Pago y Confirmación')).toBeInTheDocument();
-        
-        
+
         const totalesEsperados = screen.getAllByText((content) => content.includes('200'));
         expect(totalesEsperados.length).toBeGreaterThan(0);
     });

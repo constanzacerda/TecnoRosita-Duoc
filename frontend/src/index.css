@@ -1,111 +1,316 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --apple-white: #ffffff;
+  --apple-surface: #f5f5f7;
+  --apple-black: #000000;
+  --apple-ink: #1d1d1f;
+  --apple-muted: #6e6e73;
+  --apple-border: #d2d2d7;
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-blue-light: #2997ff;
+  --ff-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Anula variables oscuras y doradas de styles.css y mejoras.css */
+  --black: #ffffff;
+  --black-2: #ffffff;
+  --black-3: #f5f5f7;
+  --black-4: #ebebef;
+  --border: #d2d2d7;
+  --gold: #0071e3;
+  --gold-light: #2997ff;
+  --gold-dark: #0071e3;
+  --gold-gradient: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+  --text: #1d1d1f;
+  --text-dim: #6e6e73;
+  --text-faint: #86868b;
+  --shadow-gold: 0 12px 28px -10px rgba(0, 113, 227, 0.28);
+  --shadow-soft: 0 10px 26px -12px rgba(0, 0, 0, 0.1);
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+html,
+body,
+#root,
+main {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #1d1d1f !important;
+  font-family: var(--ff-apple) !important;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-apple) !important;
+  letter-spacing: -0.02em;
 }
 
-body {
-  margin: 0;
+/* ===== BARRA SUPERIOR (NEGRA LIMPIA, SIN AMARILLO SÓLIDO, CON DEGRADADO Y BOTONES AZULES) ===== */
+.navbar,
+header.navbar,
+nav.navbar {
+  background: #000000 !important;
+  background-color: #000000 !important;
+  border-bottom: 1px solid #1d1d1f !important;
+  box-shadow: none !important;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* Logo TecnoRosita con degradado amarillo -> blanco -> celeste -> azul */
+.navbar .navbar-brand,
+.navbar .navbar-brand span,
+.brand__text {
+  background: linear-gradient(90deg, #f2c94c 0%, #ffffff 42%, #66b8ff 74%, #0071e3 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  font-family: var(--ff-apple) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
+.navbar .nav-link,
+.navbar a:not(.btn):not(.navbar-brand) {
+  color: #d2d2d7 !important;
   font-weight: 500;
-  color: var(--text-h);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+.navbar .nav-link:hover,
+.navbar .nav-link.active,
+.navbar a:not(.btn):not(.navbar-brand):hover {
+  color: #ffffff !important;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* Elimina el amarillo de "Carrito", "Ingresar" y "Registrarse" en la barra */
+.navbar .text-warning {
+  color: #78c2ff !important;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.navbar .badge.bg-warning,
+.navbar .cart-badge {
+  background-color: #0071e3 !important;
+  color: #ffffff !important;
+}
+
+.navbar .btn-outline-warning,
+.navbar .btn-outline-light,
+.navbar .btn-apple-outline {
+  background: transparent !important;
+  border: 1.5px solid #2997ff !important;
+  color: #2997ff !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+}
+
+.navbar .btn-outline-warning:hover,
+.navbar .btn-outline-light:hover,
+.navbar .btn-apple-outline:hover {
+  background: #0071e3 !important;
+  border-color: #0071e3 !important;
+  color: #ffffff !important;
+}
+
+.navbar .btn-warning,
+.navbar .btn-primary,
+.navbar .btn-apple-primary {
+  background: #0071e3 !important;
+  border: 1.5px solid #0071e3 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+}
+
+.navbar .btn-warning:hover,
+.navbar .btn-primary:hover,
+.navbar .btn-apple-primary:hover {
+  background: #0077ed !important;
+  border-color: #0077ed !important;
+  color: #ffffff !important;
+}
+
+/* ===== BOTÓN CERRAR SESIÓN EN DEGRADADO PROLED (SIN ROJO) ===== */
+.navbar .btn-outline-danger,
+.navbar .btn-danger {
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(90deg, #f2c94c 0%, #ffffff 48%, #73c0ff 100%) border-box !important;
+  border: 1.5px solid transparent !important;
+  border-radius: 999px !important;
+  color: #eef6ff !important;
+  font-weight: 600 !important;
+  padding: 0.45rem 1.25rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.navbar .btn-outline-danger:hover,
+.navbar .btn-danger:hover {
+  background: linear-gradient(90deg, #f2c94c 0%, #ffffff 48%, #73c0ff 100%) !important;
+  color: #000000 !important;
+  border-color: transparent !important;
+}
+
+/* ===== BOTONES GLOBALES PÍLDORA AZUL ===== */
+.btn-apple-primary,
+.btn--gold,
+.btn-warning,
+.btn-primary {
+  background: #0071e3 !important;
+  background-color: #0071e3 !important;
+  border: 1.5px solid #0071e3 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+
+.btn-apple-primary:hover,
+.btn--gold:hover,
+.btn-warning:hover,
+.btn-primary:hover {
+  background: #0077ed !important;
+  border-color: #0077ed !important;
+  color: #ffffff !important;
+}
+
+.btn-apple-outline,
+.btn--outline,
+.btn-outline-warning,
+.btn-outline-primary {
+  background: transparent !important;
+  border: 1.5px solid #0071e3 !important;
+  color: #0071e3 !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+}
+
+.btn-apple-outline:hover,
+.btn--outline:hover,
+.btn-outline-warning:hover,
+.btn-outline-primary:hover {
+  background: #0071e3 !important;
+  color: #ffffff !important;
+}
+
+/* ===== TARJETAS, FORMULARIOS Y TABLAS LEGIBLES EN CLARO ===== */
+.card {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #1d1d1f !important;
+  border: 1px solid #e5e5ea !important;
+  border-radius: 22px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+.card::before,
+.card__media::after {
+  display: none !important;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.11) !important;
+  border-color: #c7c7cc !important;
+}
+
+.filters-bar,
+.summary,
+.form-card,
+.formulario-container,
+.admin-box,
+.blog-detalle,
+.blog-card,
+.modal-content,
+.modal-header,
+.modal-body,
+.modal-footer {
+  background-color: #ffffff !important;
+  color: #1d1d1f !important;
+  border-color: #e5e5ea !important;
+}
+
+.form-control,
+.form-select {
+  background-color: #f5f5f7 !important;
+  color: #1d1d1f !important;
+  border: 1px solid #d2d2d7 !important;
+}
+
+.table-dark,
+.table-dark th,
+.table-dark td,
+.admin-table th,
+.admin-table td {
+  --bs-table-bg: #ffffff;
+  --bs-table-color: #1d1d1f;
+  background-color: #ffffff !important;
+  color: #1d1d1f !important;
+  border-color: #e5e5ea !important;
+}
+
+.table-dark thead th,
+.admin-table th {
+  background-color: #f5f5f7 !important;
+  color: #1d1d1f !important;
+}
+
+/* ===== FOOTER CLARO Y LEGIBLE ===== */
+footer,
+.footer {
+  background: #f5f5f7 !important;
+  background-color: #f5f5f7 !important;
+  background-image: none !important;
+  color: #1d1d1f !important;
+  border-top: 4px solid transparent !important;
+  border-image: linear-gradient(90deg, #f2c94c 0%, #ffffff 35%, #66b8ff 70%, #0071e3 100%) 1 !important;
+  padding-top: 2.5rem !important;
+}
+
+footer > div,
+footer section,
+footer .container,
+footer .row,
+footer [class*="col-"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+  color: #0071e3 !important;
+  font-weight: 700 !important;
+}
+
+footer p, footer span, footer li, footer small, footer div, footer a {
+  color: #424245 !important;
+}
+
+footer strong, footer b {
+  color: #1d1d1f !important;
+}
+
+footer input, footer .form-control {
+  background-color: #ffffff !important;
+  color: #1d1d1f !important;
+  border: 1px solid #c7c7cc !important;
+  border-radius: 999px !important;
+}
+
+footer button, footer .btn {
+  background-color: #0071e3 !important;
+  border-color: #0071e3 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+}
+
+.apple-section-divider {
+  border-top: 1px solid #d2d2d7;
+  padding-top: 2rem;
+  margin-top: 2.25rem;
+}
+
+.value-strip {
+  border-top: 1px solid #e5e5ea !important;
+  border-bottom: 1px solid #e5e5ea !important;
+}
+
+.value-item__icon {
+  background: #f5f5f7 !important;
+  border-color: #d2d2d7 !important;
 }
