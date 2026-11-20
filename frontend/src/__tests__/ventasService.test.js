@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { getCart, saveCart, clearCart, ventasService } from '../services/ventasService';
+import { getCart, saveCart, clearCart, getUsers, ventasService } from '../services/ventasService';
 
 const localStorageMock = (() => {
     let store = {};
@@ -14,7 +14,6 @@ const localStorageMock = (() => {
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
 describe('Pruebas Unitarias - Módulo ventasService', () => {
-    
     beforeEach(() => {
         window.localStorage.clear();
         vi.clearAllMocks();
@@ -22,7 +21,7 @@ describe('Pruebas Unitarias - Módulo ventasService', () => {
 
     it('Debe guardar, obtener y limpiar el carrito correctamente', () => {
         const mockCart = [{ id: 1, nombre: 'Monitor', precio: 150000, qty: 1 }];
-        
+
         saveCart(mockCart);
         expect(getCart()).toEqual(mockCart);
         expect(getCart().length).toBe(1);
@@ -41,7 +40,7 @@ describe('Pruebas Unitarias - Módulo ventasService', () => {
         const ordenGuardada = ventasService.crearOrden(nuevaOrden);
         const ordenesEnMemoria = ventasService.obtenerOrdenes();
 
-        expect(ordenGuardada.id).toMatch(/^ORD-/); 
+        expect(ordenGuardada.id).toMatch(/^ORD-/);
         expect(ordenGuardada.fecha).toBeDefined();
         expect(ordenesEnMemoria.length).toBe(1);
         expect(ordenesEnMemoria[0].total).toBe(250000);
@@ -49,14 +48,14 @@ describe('Pruebas Unitarias - Módulo ventasService', () => {
 
     it('Debe registrar un usuario nuevo y evitar duplicados por email', () => {
         const usuario1 = { nombre: 'Constanza', email: 'conty@test.com' };
-        const usuario2 = { nombre: 'Constanza Modificada', email: 'conty@test.com' }; 
+        const usuario2 = { nombre: 'Constanza Modificada', email: 'conty@test.com' };
 
         ventasService.guardarUsuario(usuario1);
-        ventasService.guardarUsuario(usuario2); 
+        ventasService.guardarUsuario(usuario2);
 
-        const usuariosEnMemoria = ventasService.obtenerUsuarios();
+        const usuariosEnMemoria = getUsers();
 
-        expect(usuariosEnMemoria.length).toBe(1); 
+        expect(usuariosEnMemoria.length).toBe(1);
         expect(usuariosEnMemoria[0].nombre).toBe('Constanza');
         expect(usuariosEnMemoria[0].id).toMatch(/^USR-/);
     });

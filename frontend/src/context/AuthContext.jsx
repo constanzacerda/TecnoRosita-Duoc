@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-
 import { loginUser, logoutUser, getCurrentUser } from '../services/authService';
 
 export const AuthContext = createContext();
@@ -8,7 +7,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    
+   
     useEffect(() => {
         const storedUser = getCurrentUser(); 
         if (storedUser) {
@@ -17,12 +16,9 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-    
     const login = async (credenciales) => {
         try {
-            
             const userData = await loginUser(credenciales); 
-            
             if (userData) {
                 setUser(userData); 
                 return true;
@@ -33,10 +29,10 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    
     const logout = () => {
         setUser(null);
         logoutUser(); 
+        window.location.href = '/login';
     };
 
     if (loading) return <div>Cargando sesión...</div>;
@@ -47,4 +43,3 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
-

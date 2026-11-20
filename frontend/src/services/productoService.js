@@ -6,8 +6,28 @@ export const obtenerProductos = async () => {
         return response.data;
     } catch (error) {
         console.error("Error al obtener productos desde el backend", error);
-        return []; 
+        return [];
     }
+};
+
+export const obtenerProductoPorId = async (id) => {
+    try {
+        const response = await api.get(`/productos/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener el producto", error);
+        return null;
+    }
+};
+
+export const crearProducto = async (producto) => {
+    const response = await api.post('/productos', producto);
+    return response.data;
+};
+
+export const actualizarProducto = async (id, producto) => {
+    const response = await api.put(`/productos/${id}`, producto);
+    return response.data;
 };
 
 export const eliminarProducto = async (id) => {
@@ -20,12 +40,22 @@ export const eliminarProducto = async (id) => {
     }
 };
 
-export const obtenerProductoPorId = async (id) => {
+export const obtenerCategorias = async () => {
     try {
-        const response = await api.get(`/productos/${id}`);
+        const response = await api.get('/categorias');
         return response.data;
     } catch (error) {
-        console.error("Error al obtener el producto", error);
-        return null;
+        console.error("Error al obtener categorías desde el backend", error);
+        return [];
+    }
+};
+
+export const obtenerBoletas = async () => {
+    try {
+        const response = await api.get('/boletas');
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener boletas desde el backend", error);
+        return [];
     }
 };

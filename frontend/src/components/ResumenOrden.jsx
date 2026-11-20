@@ -1,10 +1,10 @@
 import { Card, ListGroup, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const ResumenOrden = ({ carrito, esCheckout = false, metodoPago = 'transferencia' }) => {
+const ResumenOrden = ({ carrito = [], esCheckout = false, metodoPago = 'transferencia' }) => {
     const total = carrito.reduce((acc, item) => {
-        const precio = metodoPago === 'transferencia' 
-            ? (item.precioTransferencia || item.precio || 0) 
+        const precio = metodoPago === 'transferencia'
+            ? (item.precioTransferencia || item.precio || 0)
             : (item.precioNormal || item.precio || 0);
         return acc + (precio * item.qty);
     }, 0);
@@ -15,17 +15,18 @@ const ResumenOrden = ({ carrito, esCheckout = false, metodoPago = 'transferencia
                 Resumen del Pedido
             </Card.Header>
             <ListGroup variant="flush">
-                <div style={{maxHeight: '260px', overflowY: 'auto'}} className="p-3">
+                <div style={{ maxHeight: '260px', overflowY: 'auto' }} className="p-3">
                     {carrito.map(item => {
-                        const precioItem = metodoPago === 'transferencia' 
-                            ? (item.precioTransferencia || item.precio || 0) 
+                        const precioItem = metodoPago === 'transferencia'
+                            ? (item.precioTransferencia || item.precio || 0)
                             : (item.precioNormal || item.precio || 0);
+                        const imagenSrc = item.imagenUrl || item.imagen;
                         return (
                             <div key={item.id} className="d-flex justify-content-between align-items-center mb-2 border-bottom border-secondary pb-2">
                                 <div className="d-flex align-items-center">
-                                    <img src={item.imagen} alt={item.nombre} style={{width: '40px', height: '40px', objectFit: 'cover'}} className="rounded me-2" />
+                                    <img src={imagenSrc} alt={item.nombre} style={{ width: '40px', height: '40px', objectFit: 'cover' }} className="rounded me-2" />
                                     <div>
-                                        <span className="small d-block text-truncate" style={{maxWidth: '150px'}}>{item.nombre}</span>
+                                        <span className="small d-block text-truncate" style={{ maxWidth: '150px' }}>{item.nombre}</span>
                                         <small className="text-muted">Cant: {item.qty}</small>
                                     </div>
                                 </div>
@@ -39,13 +40,13 @@ const ResumenOrden = ({ carrito, esCheckout = false, metodoPago = 'transferencia
                     <span className="text-warning fw-bold fs-5">Pagar ${total.toLocaleString('es-CL')}</span>
                 </ListGroup.Item>
             </ListGroup>
-            
+
             {!esCheckout && (
                 <Card.Body>
-                    <Button 
-                        as={Link} 
-                        to="/checkout" 
-                        variant="warning" 
+                    <Button
+                        as={Link}
+                        to="/checkout"
+                        variant="warning"
                         className="w-100 fw-bold text-dark"
                         disabled={carrito.length === 0}
                     >

@@ -4,8 +4,9 @@ import App from './App.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import './css/mejoras.css';
+import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext'; 
+import { AuthProvider } from './context/AuthContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
